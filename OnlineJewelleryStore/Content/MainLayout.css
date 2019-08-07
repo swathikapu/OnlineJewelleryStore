@@ -24,6 +24,10 @@ h6
     font-family:'Roboto condensed' sans-serif;
 }
 
+my-navbar {
+    border-radius: 0px;
+}
+
 /*[3. LOGO]*/
 .logo {
     margin-bottom: 40px;
@@ -257,3 +261,63 @@ h6
     .olSearch {
         position: relative;
     }
+
+.content {
+}
+
+    .content .page-header {
+        padding-bottom: 5px;
+        margin: 20px 0 30px;
+        border-bottom: 1px solid #eee;
+    }
+
+        .content .page-header h2 {
+            font-weight: 700;
+        }
+
+.product-item {
+    position: relative;
+}
+
+    .product-item .caption h5 {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        border-top: 2px solid #333;
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+
+    .product-item .caption .product-item-price {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 400;
+    }
+
+    .product-item .product-item-badge {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        padding: 5px 12px 6px;
+        color: #fff;
+        font-size: 12px;
+        line-height: 14px;
+        font-weight: 600;
+        background: #333;
+        -webkit-border-radius: 4px 0 4px 0;
+        -moz-border-radius: 4px 0 4px 0;
+        -o-border-radius: 4px 0 4px 0;
+        border-radius: 4px 0 4px 0;
+    }
+
+.backButton {
+    background: #ffbb00 url('Images/back_icon_white.png') no-repeat;
+    color: #fff;
+    padding-left: 31px;
+    background-size: 24px;
+    background-position-y: 2px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
+    margin-right: 4px;
+}

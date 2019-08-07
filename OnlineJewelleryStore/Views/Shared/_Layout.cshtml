@@ -10,55 +10,22 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="logo">
-                    <h1><a href="#">Online <span>Jewellery Store</span></a></h1>
-                    <p>My Shop</p>
-                </div>
+    <nav class="navbar navbar-inverse my-navbar" style="border-radius:0px;margin-bottom:0px;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Jewellery Store</a>
             </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-6">
-                <div class="account">
-                   <ul>
-                       <li>
-                           <div class="hidden-xs">
-                               <h4><a>Call</a></h4>
-                               <p>000000000</p>
-                           </div>
-                           <div class="visible-xs">
-                                <p>000000000</p>
-                           </div>
-                       </li>
-                   </ul>
-                </div>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="nav-menus">
-                    <ul class="nav nav-pills">
-                        <li class="active">
-                            <a style="border-radius:initial;" href="#">Home</a>
-                        </li>
-                        <li>
-                            <a style="border-radius:initial;" href="#">Location</a>
-                        </li>
-                        <li>
-                            <a style="border-radius:initial;" href="#">About</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </nav>
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

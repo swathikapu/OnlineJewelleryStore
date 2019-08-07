@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineJewelleryStore.Repository;
+using OnlineJewelleryStore.Models;
+
+
 
 namespace OnlineJewelleryStore.Controllers
 {
     public class HomeController : Controller
     {
+        MainRepository mainRepo = new MainRepository();
         public ActionResult Index()
         {
-            return View();
+            return View(mainRepo);
         }
 
-        public ActionResult About()
+        public ActionResult Products(int categoryId)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            List<Tbl_Product> products = mainRepo.GetProductsByCategoryId(categoryId);
+            return View(products);
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }

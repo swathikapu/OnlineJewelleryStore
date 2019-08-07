@@ -1,4 +1,8 @@
-﻿@{
+﻿
+@model  OnlineJewelleryStore.Repository.MainRepository
+@{
+    /**/
+
     ViewBag.Title = "Home Page";
 }
 
@@ -53,14 +57,59 @@
         </div>*@
 </div>
 
-<div class="olContent f1">
-    <h2 style="color:black">Search Product/ Category</h2>
-</div>
-<div class="olSearch fr">
-    <input type="text" placeholder="Enter Keyword" name="searchKey" class="inputComn houseText form-control" />
-    <div class="searchIcon">
-        <button type="button" class="searchBtn">
-            <img src="~/Content/Images/searchIcon.png" style="width:10%" />
-        </button>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="olContent f1">
+            <h2 style="color:black">Search Product/ Category</h2>
+        </div>
+        <div class="olSearch fr">
+            <input type="text" placeholder="Enter Keyword" name="searchKey" class="inputComn houseText form-control" />
+            <div class="searchIcon">
+                <button type="button" class="searchBtn">
+                    <img src="~/Content/Images/searchIcon.png" style="width:10%" />
+                </button>
+            </div>
+        </div>
+        @foreach (var category in Model.GetAllCategories())
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>@category.Name <small>trends products</small></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row product-container">
+                @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
+                {
+
+                    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+                        <div class="thumbnail product-item" style="height:300px">
+                            <img class="img-responsive" title="click to view product detail"
+                                 style="cursor:pointer;height:160px;width:100%;"
+                                 src=@Url.Content(product.Image) />
+                            <div class="caption">
+                                <h5>@product.Name</h5>
+                                <p>@product.Price</p>
+                                @*<p>Available</p>*@
+                                <div class="product-item-badge">New</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @Html.ActionLink(
+                    "View All " + @category.Name,
+                    "Products",
+                    new { categoryId = category.Id},
+                    new {
+                        @class = "btn btn-primary btn-sm backButton",
+                        @style = "float:right;"
+                    }
+                )
+        }
+
     </div>
-</div>
+}
