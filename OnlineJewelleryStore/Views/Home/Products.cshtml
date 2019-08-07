@@ -17,7 +17,7 @@
                          src=@Url.Content(product.Image) />
                     <div class="caption">
                         <h5>@product.Name</h5>
-                        <p>@product.Price</p>
+                        @Html.DisplayFor(modelItem => product.Price)
                         @*<p>Available</p>*@
                         <div class="product-item-badge">New</div>
                     </div>

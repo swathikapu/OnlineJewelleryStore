@@ -153,6 +153,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JewelleryModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelsMetadata.cs" />
     <Compile Include="Models\Tbl_Category.cs">
       <DependentUpon>JewelleryModel.tt</DependentUpon>
     </Compile>
