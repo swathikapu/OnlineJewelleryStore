@@ -15,11 +15,13 @@ namespace OnlineJewelleryStore.Controllers
         {
             Tbl_Product product = mainRepo.GetProductById(productId);
             CartItem item = new CartItem() { Product = product, Quantity = quantity };
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            Cart cart;
             if (Session["cart"] == null)
-                cart = new List<CartItem>();
+                cart = new Cart();
+            else
+                cart = (Cart)Session["cart"];
             cart.Add(item);
-            Session["cart"] = cart;
+            Session["cart"] = cart;    // update cart with new details.
             return RedirectToAction("Index", "Home");
         }
     }

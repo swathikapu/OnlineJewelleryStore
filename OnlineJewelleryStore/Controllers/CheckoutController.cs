@@ -12,7 +12,7 @@ namespace OnlineJewelleryStore.Controllers
         // GET: Checkout
         public ActionResult Checkout()
         {
-            List<CartItem> cart = (List<CartItem>)Session["cart"];
+            Cart cart = (Cart)Session["cart"];
             return View(cart);
         }
     }
