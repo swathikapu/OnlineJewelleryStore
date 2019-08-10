@@ -1,0 +1,23 @@
+﻿@model OnlineJewelleryStore.Models.Tbl_Product
+
+<div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+    <div class="thumbnail product-item" style="height:300px">
+        <img class="img-responsive" title="click to view product detail"
+             style="cursor:pointer;height:160px;width:100%;"
+             src=@Url.Content(Model.Image) />
+        <div class="caption">
+            <h5>@Model.Name</h5>
+            @Html.DisplayFor(modelItem => Model.Price)
+            <div class="product-item-badge">New</div>
+        </div>
+        <div style="float:right;">
+            @Html.ActionLink(
+                "Add to Cart",
+                "Add",
+                "Cart",
+                new { productId=Model.Id, quantity=1 },
+                new { @class= "btn btn-primary btn-sm cartButton" }
+            )
+        </div>
+    </div>
+</div>

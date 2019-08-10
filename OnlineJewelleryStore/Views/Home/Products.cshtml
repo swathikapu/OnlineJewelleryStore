@@ -6,36 +6,22 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div class="container" style="padding-top:30px;">
-    <div class="row product-container">
-        @foreach (var product in Model)
-        {
-            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
-                <div class="thumbnail product-item" style="height:300px">
-                    <img class="img-responsive" title="click to view product detail"
-                         style="cursor:pointer;height:160px;width:100%;"
-                         src=@Url.Content(product.Image) />
-                    <div class="caption">
-                        <h5>@product.Name</h5>
-                        @Html.DisplayFor(modelItem => product.Price)
-                        @*<p>Available</p>*@
-                        <div class="product-item-badge">New</div>
-                    </div>
-                </div>
-            </div>
-        }
+    <div class="container" style="padding-top:150px;">
+        <div class="row product-container">
+            @foreach (var product in Model)
+            {
+                @Html.Action("_ProductPartial", new { id = product.Id })
+            }
+        </div>
+        @Html.ActionLink(
+            "Back to Home Page ",
+            "Index",
+            new {},
+            new {
+                @class = "btn btn-primary btn-sm backButton",
+                @style = "float:right;"
+            }
+        )
     </div>
-    @Html.ActionLink(
-        "Back to Home Page ",
-        "Index",
-        new {},
-        new {
-            @class = "btn btn-primary btn-sm backButton",
-            @style = "float:right;"
-        }
-    )
-</div>
-
-
 }
 

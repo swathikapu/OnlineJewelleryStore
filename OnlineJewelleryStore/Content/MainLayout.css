@@ -321,3 +321,15 @@ my-navbar {
     float: right;
     margin-right: 4px;
 }
+
+.cartButton {
+    background: #f18681 url('Images/cart_icon_white.png') no-repeat;
+    color: #fff;
+    padding-left: 31px;
+    background-size: 24px;
+    background-position-y: 2px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
+    margin-right: 4px;
+}

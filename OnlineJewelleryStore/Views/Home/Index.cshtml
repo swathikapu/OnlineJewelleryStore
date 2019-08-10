@@ -84,27 +84,7 @@
             <div class="row product-container">
                 @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
                 {
-
-                    <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
-                        <div class="thumbnail product-item" style="height:300px">
-                            <img class="img-responsive" title="click to view product detail"
-                                 style="cursor:pointer;height:160px;width:100%;"
-                                 src=@Url.Content(product.Image) />
-                            <div class="caption">
-                                <h5>@product.Name</h5>
-                                @Html.DisplayFor(modelItem => product.Price)
-                                @*<p>Available</p>*@
-                                <div class="product-item-badge">New</div>
-                            </div>
-                            <div style="float:right;">
-                                @*<button type="button" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart
-                                </button>*@
-                                @Html.ActionLink("Add to Cart","Add", "Cart",new { productId=product.Id, quantity=1 }, new { @class="glyphicon glyphicon-shopping-cart" } )
-
-                            </div>
-                        </div>
-                    </div>
+                    @Html.Action("_ProductPartial", new { id = product.Id })
                 }
             </div>
             @Html.ActionLink(

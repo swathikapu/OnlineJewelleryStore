@@ -24,6 +24,12 @@ namespace OnlineJewelleryStore.Controllers
             return View(products);
         }
 
+        public ActionResult _Productpartial(int id)
+        {
+            Tbl_Product product = mainRepo.GetProductById(id);
+            return PartialView(product);
+        }
+
         public ActionResult Register()
         {
             return View();

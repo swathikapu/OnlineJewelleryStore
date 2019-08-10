@@ -227,6 +227,7 @@
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Checkout\Checkout.cshtml" />
     <Content Include="Views\Cart\Add.cshtml" />
+    <Content Include="Views\Home\_Productpartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
