@@ -1,0 +1,24 @@
+﻿@model IEnumerable<OnlineJewelleryStore.Models.CartItem>
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+            <p>@item.Product.Name</p>
+        </td>
+    </tr>
+}
+
+</table>

@@ -10,14 +10,19 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-inverse my-navbar" style="border-radius:0px;margin-bottom:0px;">
+    <nav class="navbar navbar-inverse my-navbar navbar-fixed-top" style="border-radius:0px;margin-bottom:0px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Jewellery Store</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
+                @*@Html.ActionLink("Sign Up", "Register", "Home", new { }, new { })*@
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                @*<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Checkout</a></li>*@
+                <li>
+                    @Html.ActionLink("Checkout", "Checkout", "Checkout", new { }, new { })
+                </li>
             </ul>
         </div>
     </nav>

@@ -96,6 +96,13 @@
                                 @*<p>Available</p>*@
                                 <div class="product-item-badge">New</div>
                             </div>
+                            <div style="float:right;">
+                                @*<button type="button" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>Add to Cart
+                                </button>*@
+                                @Html.ActionLink("Add to Cart","Add", "Cart",new { productId=product.Id, quantity=1 }, new { @class="glyphicon glyphicon-shopping-cart" } )
+
+                            </div>
                         </div>
                     </div>
                 }

@@ -24,5 +24,10 @@ namespace OnlineJewelleryStore.Repository
         {
             return db.Tbl_Product.Where(p => p.CategoryId == categoryId && p.IsFeatured == true).ToList();
         }
+
+        public Tbl_Product GetProductById(int productId)
+        {
+            return db.Tbl_Product.Find(productId);
+        }
     }
 }

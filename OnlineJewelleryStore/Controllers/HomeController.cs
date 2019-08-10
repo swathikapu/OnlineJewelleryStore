@@ -24,6 +24,9 @@ namespace OnlineJewelleryStore.Controllers
             return View(products);
         }
 
-       
+        public ActionResult Register()
+        {
+            return View();
+        }
     }
 }
