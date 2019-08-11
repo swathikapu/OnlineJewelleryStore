@@ -331,5 +331,16 @@ my-navbar {
     background-position-x: 6px;
     position: relative;
     float: right;
+    margin-right: 9px;
+}
+
+.quantityButton {
+    background: #f18681;
+    color: #fff;
+    background-size: 24px;
+    background-position-y: 2px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
     margin-right: 4px;
 }
