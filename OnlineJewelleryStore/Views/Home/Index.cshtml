@@ -83,10 +83,7 @@
             <div class="row product-container">
                 @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
                 {
-                    <div id="product" + @product.Id>
-                        @Html.Action("_Productpartial", new { id = product.Id })
-                    </div>
-                    
+                    @Html.Action("_Productpartial", new { id = product.Id })
                 }
             </div>
             @Html.ActionLink(

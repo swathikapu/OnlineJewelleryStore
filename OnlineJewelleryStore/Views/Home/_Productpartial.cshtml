@@ -12,10 +12,10 @@
         </div>
         @Ajax.ActionLink(
             linkText: "Add to Cart",
-            actionName: "Add",
+            actionName: "AddToCart",
             controllerName: "Home",
             routeValues: new { productId = Model.Id, quantity = 1 },
-            ajaxOptions: new AjaxOptions { },
+            ajaxOptions: new AjaxOptions {},
             htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
         )
     </div>

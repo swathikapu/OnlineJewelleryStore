@@ -56,6 +56,5 @@ namespace OnlineJewelleryStore.Models
             }
             return -1;
         }
-
     }
 }

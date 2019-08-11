@@ -9,10 +9,13 @@ namespace OnlineJewelleryStore.Controllers
 {
     public class CheckoutController : Controller
     {
-        // GET: Checkout
         public ActionResult Checkout()
         {
-            Cart cart = (Cart)Session["cart"];
+            Cart cart;
+            if (Session["cart"] == null)
+                cart = new Cart();
+            else
+                cart = (Cart)Session["cart"];
             return View(cart);
         }
     }

@@ -6,8 +6,6 @@ using System.Web.Mvc;
 using OnlineJewelleryStore.Repository;
 using OnlineJewelleryStore.Models;
 
-
-
 namespace OnlineJewelleryStore.Controllers
 {
     public class HomeController : Controller
@@ -18,7 +16,7 @@ namespace OnlineJewelleryStore.Controllers
             return View(mainRepo);
         }
 
-        public ActionResult Add(int productId, int quantity)
+        public ActionResult AddToCart(int productId, int quantity)
         {
             Tbl_Product product = mainRepo.GetProductById(productId);
             CartItem item = new CartItem() { Product = product, Quantity = quantity };
@@ -42,11 +40,6 @@ namespace OnlineJewelleryStore.Controllers
         {
             Tbl_Product product = mainRepo.GetProductById((int)id);
             return PartialView(product);
-        }
-
-        public ActionResult Register()
-        {
-            return View();
         }
     }
 }
