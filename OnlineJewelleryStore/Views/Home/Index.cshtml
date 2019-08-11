@@ -1,5 +1,4 @@
-﻿
-@model  OnlineJewelleryStore.Repository.MainRepository
+﻿@model  OnlineJewelleryStore.Repository.MainRepository
 @{
     /**/
 
@@ -84,7 +83,10 @@
             <div class="row product-container">
                 @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
                 {
-                    @Html.Action("_ProductPartial", new { id = product.Id })
+                    <div id="product" + @product.Id>
+                        @Html.Action("_Productpartial", new { id = product.Id })
+                    </div>
+                    
                 }
             </div>
             @Html.ActionLink(

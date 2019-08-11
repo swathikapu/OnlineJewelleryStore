@@ -10,7 +10,9 @@
         <div class="row product-container">
             @foreach (var product in Model)
             {
-                @Html.Action("_ProductPartial", new { id = product.Id })
+                <div id="@product.Id">
+                    @Html.Action("_Productpartial", new { id = product.Id })
+                </div>
             }
         </div>
         @Html.ActionLink(

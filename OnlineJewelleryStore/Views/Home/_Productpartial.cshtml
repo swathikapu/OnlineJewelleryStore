@@ -10,14 +10,13 @@
             @Html.DisplayFor(modelItem => Model.Price)
             <div class="product-item-badge">New</div>
         </div>
-        <div style="float:right;">
-            @Html.ActionLink(
-                "Add to Cart",
-                "Add",
-                "Cart",
-                new { productId=Model.Id, quantity=1 },
-                new { @class= "btn btn-primary btn-sm cartButton" }
-            )
-        </div>
+        @Ajax.ActionLink(
+            linkText: "Add to Cart",
+            actionName: "Add",
+            controllerName: "Home",
+            routeValues: new { productId = Model.Id, quantity = 1 },
+            ajaxOptions: new AjaxOptions { },
+            htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+        )
     </div>
 </div>
