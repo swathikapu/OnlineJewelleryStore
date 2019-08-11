@@ -1,10 +1,13 @@
 ﻿@model OnlineJewelleryStore.Models.Cart
 
 <div class="ajaxcart" id="cart-details">
-    <div>
-        <i class="ion-android-cart"></i> @Model.NumberOfItems item(s) - £@Model.TotalPrice
-    </div>
     <div class="checkoutName">
-        @Html.ActionLink("Checkout", "Checkout", "Checkout")
+        @Html.ActionLink(
+            "Checkout " + @Model.NumberOfItems + " item(s) - £" + @Model.TotalPrice, 
+            "Checkout",
+            "Checkout",
+            new { }, 
+            new { @class = "btn btn-primary btn-sm checkoutButton" }
+        )
     </div>
 </div>

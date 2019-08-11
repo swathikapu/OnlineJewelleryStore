@@ -334,13 +334,12 @@ my-navbar {
     margin-right: 9px;
 }
 
-.quantityButton {
-    background: #f18681;
+.checkoutButton {
+    background: #a5c05b url('Images/cart_icon_white.png') no-repeat;
     color: #fff;
+    padding-left: 31px;
     background-size: 24px;
     background-position-y: 2px;
     background-position-x: 6px;
-    position: relative;
-    float: right;
-    margin-right: 4px;
+    margin-right: 9px;
 }
