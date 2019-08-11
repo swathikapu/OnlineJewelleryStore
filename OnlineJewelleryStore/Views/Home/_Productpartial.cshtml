@@ -15,7 +15,10 @@
             actionName: "AddToCart",
             controllerName: "Home",
             routeValues: new { productId = Model.Id, quantity = 1 },
-            ajaxOptions: new AjaxOptions {},
+            ajaxOptions: new AjaxOptions {
+                UpdateTargetId= "cart-details",
+                InsertionMode=InsertionMode.Replace
+            },
             htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
         )
     </div>

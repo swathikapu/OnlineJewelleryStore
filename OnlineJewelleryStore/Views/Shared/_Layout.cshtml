@@ -27,9 +27,10 @@
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 @*<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Checkout</a></li>*@
-                <li>
+                @Html.Action("_Cartpartial", "Home")
+                @*<li>
                     @Html.ActionLink("Checkout", "Checkout", "Checkout", new { }, new { })
-                </li>
+                </li>*@
             </ul>
         </div>
     </nav>
