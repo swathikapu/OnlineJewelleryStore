@@ -36,14 +36,22 @@ namespace OnlineJewelleryStore.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
             Tbl_Member member = mainRepo.GetMember(username, password);
             if (member != null)
             {
-                return RedirectToAction("Index", "Home");
+                Session["username"] = username;
+                Session["password"] = password;
+                if(Session["destination"] == null)
+                    return RedirectToAction("Index", "Home");
+                else
+                {
+                    DestinationRoute destination = (DestinationRoute)Session["destination"];
+                    Session.Remove("destination");
+                    return RedirectToAction(destination.ActionName, destination.ControllerName);
+                }
             }
             return View(member);
         }

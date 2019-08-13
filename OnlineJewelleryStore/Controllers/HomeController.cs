@@ -30,18 +30,6 @@ namespace OnlineJewelleryStore.Controllers
             return PartialView("_Cartpartial", cart);
         }
 
-        public ActionResult Products(int categoryId)
-        {
-            List<Tbl_Product> products = mainRepo.GetProductsByCategoryId(categoryId);
-            return View(products);
-        }
-
-        public ActionResult _Productpartial(int ?id)
-        {
-            Tbl_Product product = mainRepo.GetProductById((int)id);
-            return PartialView(product);
-        }
-
         public ActionResult _Cartpartial()
         {
             Cart cart;
@@ -51,7 +39,5 @@ namespace OnlineJewelleryStore.Controllers
                 cart = (Cart)Session["cart"];
             return PartialView(cart);
         }
-
-        
     }
 }

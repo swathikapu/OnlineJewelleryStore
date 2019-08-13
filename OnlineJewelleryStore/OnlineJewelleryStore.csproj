@@ -135,13 +135,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\DestinationRoute.cs" />
     <Compile Include="Models\JewelleryModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,6 +165,12 @@
       <DependentUpon>JewelleryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Member.cs">
+      <DependentUpon>JewelleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Order.cs">
+      <DependentUpon>JewelleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_OrderDetails.cs">
       <DependentUpon>JewelleryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Product.cs">
@@ -229,16 +238,18 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Products.cshtml" />
-    <Content Include="Views\Checkout\Checkout.cshtml" />
-    <Content Include="Views\Home\_Productpartial.cshtml" />
+    <Content Include="Views\Product\Products.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Product\_Productpartial.cshtml" />
     <Content Include="Views\Home\_Cartpartial.cshtml" />
-    <Content Include="Views\Checkout\Buy.cshtml" />
+    <Content Include="Views\Cart\Buy.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Order\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

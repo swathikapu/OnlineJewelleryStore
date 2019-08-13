@@ -83,12 +83,13 @@
             <div class="row product-container">
                 @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
                 {
-                    @Html.Action("_Productpartial", new { id = product.Id })
+                    @Html.Action("_Productpartial", "Product",new { id = product.Id })
                 }
             </div>
             @Html.ActionLink(
                 "View All " + @category.Name,
                 "Products",
+                "Product",
                 new { categoryId = category.Id},
                 new {
                     @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",

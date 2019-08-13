@@ -58,5 +58,15 @@ namespace OnlineJewelleryStore.Repository
             }
             
         }
+
+        public Cart GetCartFromSession(HttpSessionStateBase session)
+        {
+            Cart cart;
+            if (session["cart"] == null)
+                cart = new Cart();
+            else
+                cart = (Cart)session["cart"];
+            return cart;
+        }
     }
 }
