@@ -7,6 +7,8 @@
     @*@Styles.Render("~/Content/css")*@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/MainLayout.css" rel="stylesheet" />
+    <link href="~/Content/animate.css" rel="stylesheet" />
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -15,6 +17,11 @@
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/jquery.validate.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+    <script src="~/Scripts/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-inverse my-navbar navbar-fixed-top" style="border-radius:0px;margin-bottom:0px;color:white">
@@ -23,12 +30,27 @@
                 <a class="navbar-brand" href="#">Jewellery Store</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li style="padding-top:10px">@Html.Action(
-                    "_Cartpartial",
-                    "Home"
-                )</li>
+                <li>
+                    @Html.ActionLink(
+                        "Sign Up",
+                        "SignUp",
+                        "Account"
+                    )
+                </li>
+                <li>
+                    @Html.ActionLink(
+                        "Login",
+                        "Login",
+                        "Account"
+                    )
+                </li>
+                @*<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>*@
+                <li style="padding-top:10px">
+                    @Html.Action(
+                        "_Cartpartial",
+                        "Home"
+                    )
+                </li>
             </ul>
         </div>
     </nav>

@@ -29,5 +29,34 @@ namespace OnlineJewelleryStore.Repository
         {
             return db.Tbl_Product.Find(productId);
         }
+
+        public void SaveMemberToDB(Tbl_Member member)
+        {
+            db.Tbl_Member.Add(member);
+            db.SaveChanges();
+        }
+
+        public bool IsValidMember(string username, string password)
+        {
+          Tbl_Member member = db.Tbl_Member.Single(m => m.UserName == username && m.Password == password);
+            if (member == null)
+                return false;
+            else
+                return true;
+        }
+
+        public Tbl_Member GetMember(string username, string password)
+        {
+            try
+            {
+                 return (Tbl_Member)db.Tbl_Member.Single(m => m.UserName == username && m.Password == password);
+            }
+
+            catch
+            {
+                return null;
+            }
+            
+        }
     }
 }

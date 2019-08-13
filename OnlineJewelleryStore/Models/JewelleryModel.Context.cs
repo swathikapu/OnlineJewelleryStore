@@ -27,5 +27,6 @@ namespace OnlineJewelleryStore.Models
     
         public virtual DbSet<Tbl_Category> Tbl_Category { get; set; }
         public virtual DbSet<Tbl_Product> Tbl_Product { get; set; }
+        public virtual DbSet<Tbl_Member> Tbl_Member { get; set; }
     }
 }

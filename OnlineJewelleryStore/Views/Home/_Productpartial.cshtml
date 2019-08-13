@@ -6,8 +6,8 @@
              style="cursor:pointer;height:160px;width:100%;"
              src=@Url.Content(Model.Image) />
         <div class="caption">
-            <h5>@Model.Name</h5>
-            @Html.DisplayFor(modelItem => Model.Price)
+            <h5 class="text-primary">@Model.Name</h5>
+            <p class="text-danger" style="font-weight:bold">@Html.DisplayFor(modelItem => Model.Price)</p>
             <div class="product-item-badge">New</div>
             @*<div style="float:right">
                 <p style="display:inline-block">Quantity</p>

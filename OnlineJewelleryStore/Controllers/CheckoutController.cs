@@ -18,5 +18,10 @@ namespace OnlineJewelleryStore.Controllers
                 cart = (Cart)Session["cart"];
             return View(cart);
         }
+
+        public ActionResult Buy()
+        {
+            return View();
+        }
     }
 }

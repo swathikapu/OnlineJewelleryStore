@@ -51,5 +51,7 @@ namespace OnlineJewelleryStore.Controllers
                 cart = (Cart)Session["cart"];
             return PartialView(cart);
         }
+
+        
     }
 }

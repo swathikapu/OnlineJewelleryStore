@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="JewelleryDBModel.Tbl_Category" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JewelleryDBModel.Tbl_Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="JewelleryDBModel.FK__Tbl_Produ__Categ__25869641" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="JewelleryDBModel.Tbl_Member" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

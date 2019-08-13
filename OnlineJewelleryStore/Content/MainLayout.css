@@ -322,12 +322,57 @@ my-navbar {
     margin-right: 4px;
 }
 
-.cartButton {
-    background: #f18681 url('Images/cart_icon_white.png') no-repeat;
+.continueButton {
+    background: #3a5199 url('Images/continue_icon_white.png') no-repeat;
+    color: #fff;
+    padding-left: 31px;
+    background-size: 18px;
+    background-position-y: 4px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
+}
+
+.buyButton {
+    background: #b2473e url('Images/buy_icon_white.png') no-repeat;
+    color: #fff;
+    padding-left: 31px;
+    background-size: 18px;
+    background-position-y: 5px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
+}
+.frontButton {
+    background: #ffbb00 url('Images/front_icon_white.png') no-repeat;
     color: #fff;
     padding-left: 31px;
     background-size: 24px;
     background-position-y: 2px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
+    margin-right: 4px;
+}
+
+.cartButton {
+    background: #f18681 url('Images/add_cart_icon_white.png') no-repeat;
+    color: #fff;
+    padding-left: 26px;
+    background-size: 18px;
+    background-position-y: 4px;
+    background-position-x: 6px;
+    position: relative;
+    float: right;
+    margin-right: 9px;
+}
+
+.signUpButton {
+    background: #f18681 url('Images/add_cart_icon_white.png') no-repeat;
+    color: #fff;
+    padding-left: 26px;
+    background-size: 18px;
+    background-position-y: 4px;
     background-position-x: 6px;
     position: relative;
     float: right;
@@ -342,4 +387,14 @@ my-navbar {
     background-position-y: 2px;
     background-position-x: 6px;
     margin-right: 9px;
+}
+
+.category-heading {
+    position: relative;
+    top: 8px;
+    left: 8px;
+}
+
+.login-edit {
+    width: 370px;
 }

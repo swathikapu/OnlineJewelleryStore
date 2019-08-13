@@ -75,8 +75,8 @@
         {
             <div class="row">
                 <div class="col-md-12">
-                    <div class="page-header">
-                        <h2>@category.Name <small>trends products</small></h2>
+                    <div class="page-header bg-primary text-center text-capitalize text-justify">
+                        <h2 class=" category-heading">@category.Name <small style="color:white">Latest</small></h2>
                     </div>
                 </div>
             </div>
@@ -87,14 +87,14 @@
                 }
             </div>
             @Html.ActionLink(
-                    "View All " + @category.Name,
-                    "Products",
-                    new { categoryId = category.Id},
-                    new {
-                        @class = "btn btn-primary btn-sm backButton",
-                        @style = "float:right;"
-                    }
-                )
+                "View All " + @category.Name,
+                "Products",
+                new { categoryId = category.Id},
+                new {
+                    @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",
+                    @style = "float:right;"
+                }
+            )
         }
     </div>
 }

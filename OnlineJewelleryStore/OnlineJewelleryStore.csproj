@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="Models\ModelsMetadata.cs" />
     <Compile Include="Models\Tbl_Category.cs">
+      <DependentUpon>JewelleryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tbl_Member.cs">
       <DependentUpon>JewelleryModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Tbl_Product.cs">
@@ -229,6 +233,10 @@
     <Content Include="Views\Checkout\Checkout.cshtml" />
     <Content Include="Views\Home\_Productpartial.cshtml" />
     <Content Include="Views\Home\_Cartpartial.cshtml" />
+    <Content Include="Views\Checkout\Buy.cshtml" />
+    <Content Include="Views\Home\Test.cshtml" />
+    <Content Include="Views\Account\SignUp.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
