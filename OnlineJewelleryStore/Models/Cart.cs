@@ -38,7 +38,7 @@ namespace OnlineJewelleryStore.Models
                 return numItems;
             }
         }
-        public void Add(CartItem item)
+        public void AddItem(CartItem item)
         {
             int _index = getExistingItemIndex(item);
             if (_index == -1)
@@ -47,23 +47,26 @@ namespace OnlineJewelleryStore.Models
                 _Items[_index].Quantity += 1;
         }
 
-        public void Remove(CartItem item)
+        public void RemoveItem(CartItem item)
         {
             _Items.Remove(item);
         }
 
-        public void RemoveUsingProductId(int productId)
+        public void RemoveItem(int productId)
         {
-            CartItem itemToRemove = null;
+            CartItem cartItem = null;
             foreach(var item in Items)
             {
-                if (item.Product.Id == productId)
-                    itemToRemove = item;
+                if(item.Product.Id == productId)
+                {
+                    cartItem = item;
+                }
             }
-            if (itemToRemove != null)
-                Items.Remove(itemToRemove);
+            if(cartItem != null)
+            {
+                Items.Remove(cartItem);
+            }
         }
-
         public int getExistingItemIndex(CartItem itemToCheck)
         {
             for(int i=0; i<_Items.Count(); i++)

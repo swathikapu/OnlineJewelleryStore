@@ -21,7 +21,7 @@ namespace OnlineJewelleryStore.Controllers
             Tbl_Product product = mainRepo.GetProductById(productId);
             CartItem item = new CartItem() { Product = product, Quantity = quantity };
             Cart cart = mainRepo.GetCartFromSession(Session);
-            cart.Add(item);
+            cart.AddItem(item);
             Session["cart"] = cart;    // update cart with new details.
             return PartialView("_Cartpartial", cart);
         }
@@ -29,7 +29,7 @@ namespace OnlineJewelleryStore.Controllers
         public ActionResult RemoveFromCart(int productId)
         {
             Cart cart = mainRepo.GetCartFromSession(Session);
-            cart.RemoveUsingProductId(productId);
+            cart.RemoveItem(productId);
             Session["cart"] = cart;
             return PartialView("_Cartpartial", cart);
         }
