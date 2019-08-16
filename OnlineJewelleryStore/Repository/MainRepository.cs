@@ -55,8 +55,7 @@ namespace OnlineJewelleryStore.Repository
             catch
             {
                 return null;
-            }
-            
+            }            
         }
 
         public Cart GetCartFromSession(HttpSessionStateBase session)

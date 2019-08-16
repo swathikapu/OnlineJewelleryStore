@@ -46,6 +46,24 @@ namespace OnlineJewelleryStore.Models
             else
                 _Items[_index].Quantity += 1;
         }
+
+        public void Remove(CartItem item)
+        {
+            _Items.Remove(item);
+        }
+
+        public void RemoveUsingProductId(int productId)
+        {
+            CartItem itemToRemove = null;
+            foreach(var item in Items)
+            {
+                if (item.Product.Id == productId)
+                    itemToRemove = item;
+            }
+            if (itemToRemove != null)
+                Items.Remove(itemToRemove);
+        }
+
         public int getExistingItemIndex(CartItem itemToCheck)
         {
             for(int i=0; i<_Items.Count(); i++)

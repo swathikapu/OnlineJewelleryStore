@@ -20,23 +20,23 @@ namespace OnlineJewelleryStore.Controllers
         {
             Tbl_Product product = mainRepo.GetProductById(productId);
             CartItem item = new CartItem() { Product = product, Quantity = quantity };
-            Cart cart;
-            if (Session["cart"] == null)
-                cart = new Cart();
-            else
-                cart = (Cart)Session["cart"];
+            Cart cart = mainRepo.GetCartFromSession(Session);
             cart.Add(item);
             Session["cart"] = cart;    // update cart with new details.
             return PartialView("_Cartpartial", cart);
         }
 
+        public ActionResult RemoveFromCart(int productId)
+        {
+            Cart cart = mainRepo.GetCartFromSession(Session);
+            cart.RemoveUsingProductId(productId);
+            Session["cart"] = cart;
+            return PartialView("_Cartpartial", cart);
+        }
+
         public ActionResult _Cartpartial()
         {
-            Cart cart;
-            if (Session["cart"] == null)
-                cart = new Cart();
-            else
-                cart = (Cart)Session["cart"];
+            Cart cart = mainRepo.GetCartFromSession(Session);
             return PartialView(cart);
         }
     }

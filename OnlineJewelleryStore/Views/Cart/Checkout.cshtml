@@ -34,6 +34,17 @@
                 </td>
                 <td class="text-primary" style="padding-top:40px">
                     @Html.DisplayFor(modelItem => item.Product.Name)
+                    @Ajax.ActionLink(
+                        linkText: "Remove",
+                        actionName: "RemovefromCart",
+                        controllerName: "Home",
+                        routeValues: new { productId = item.Product.Id},
+                        ajaxOptions: new AjaxOptions {
+                            UpdateTargetId= "cart-details",
+                            InsertionMode=InsertionMode.Replace
+                        },
+                        htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+                    )
                 </td>
                 <td style="padding-top:40px">
                     @Html.DisplayFor(modelItem => item.Quantity)
