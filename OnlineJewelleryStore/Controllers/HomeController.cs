@@ -26,13 +26,6 @@ namespace OnlineJewelleryStore.Controllers
             return PartialView("_Cartpartial", cart);
         }
 
-        public ActionResult RemoveFromCart(int productId)
-        {
-            Cart cart = mainRepo.GetCartFromSession(Session);
-            cart.RemoveItem(productId);
-            Session["cart"] = cart;
-            return PartialView("_Cartpartial", cart);
-        }
 
         public ActionResult _Cartpartial()
         {

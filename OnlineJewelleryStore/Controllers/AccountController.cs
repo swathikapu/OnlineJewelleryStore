@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using OnlineJewelleryStore.Models;
 using OnlineJewelleryStore.Repository;
 
@@ -54,6 +55,14 @@ namespace OnlineJewelleryStore.Controllers
                 }
             }
             return View(member);
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("username");
+            Session.Remove("password");
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

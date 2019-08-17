@@ -33,6 +33,21 @@ namespace OnlineJewelleryStore.Controllers
             return View(cart);
         }
 
+        public ActionResult _Checkoutpartial(int productId)
+        {
+            Cart cart = mainRepo.GetCartFromSession(Session);
+            CartItem cartItem = cart.GetItem(productId);
+            return PartialView(cartItem);
+        }
+        
+        public ActionResult RemoveFromCart(int productId)
+        {
+            Cart cart = mainRepo.GetCartFromSession(Session);
+            cart.RemoveItem(productId);
+            Session["cart"] = cart;
+            return RedirectToAction("Checkout");
+        }
+
         public ActionResult Buy()
         {
             return View();

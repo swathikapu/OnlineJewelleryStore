@@ -37,20 +37,89 @@
                         "Account"
                     )
                 </li>
-                <li>
-                    @Html.ActionLink(
-                        "Login",
-                        "Login",
-                        "Account"
-                    )
-                </li>
-                @*<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>*@
-                <li style="padding-top:10px">
-                    @Html.Action(
-                        "_Cartpartial",
-                        "Home"
-                    )
-                </li>
+                @if (Session["username"] == null)
+                {
+                    <li>
+                        @Html.ActionLink(
+                             "Login",
+                             "Login",
+                             "Account"
+                         )
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        @Html.ActionLink(
+                             "Logout",
+                             "Logout",
+                             "Account"
+                         )
+                    </li>
+                }
+                @if (ViewBag.Title != "Checkout")
+                {
+                    <li style="padding-top:10px">
+                        @Html.Action(
+                            "_Cartpartial",
+                            "Home"
+                        )
+                    </li>
+                }
+
+
+                @*@if (Request.IsAuthenticated)
+            {
+                <li class="nav-link"><a href="/account/logout">Logout</a></li>
+            }
+            else
+            {
+                if (ViewBag.Title == "Login")
+                {
+                    <li class="nav-link login"><a class="login" href="/account/login">Login</a></li>
+                }
+                else
+                {
+                    <li class="nav-link login"><a class="login" href="/account/login">Login</a></li>
+                }
+            }
+
+            @if (Request.IsAuthenticated && !User.Identity.Name.Equals("admin"))
+
+            {
+                if (ViewBag.Title == "User Profile" || ViewBag.Title == "Orders")
+                {
+                    <li class="active nav-link">@Html.Action("UserNavPartial", "Account", new { area = "" })</li>
+                }
+                else
+                {
+                    <li class="nav-link">@Html.Action("UserNavPartial", "Account", new { area = "" })</li>
+                }
+            }
+        </ul>
+
+        @if (Request.IsAuthenticated && User.Identity.Name.Equals("admin"))
+        {
+
+            <button type="button" class=" btn-admin btn btn-info ">@Html.ActionLink("Admin Area", "Index", "Dashboard", new { area = "Admin" }, null) </button>
+        }
+        else
+        {
+            if (ViewBag.Title != "Cart Details")
+            {
+
+                @Html.Action("CartPartial", "Cart")
+
+            }
+        }*@
+
+
+
+
+
+
+
+
             </ul>
         </div>
     </nav>

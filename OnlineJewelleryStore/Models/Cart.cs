@@ -77,5 +77,18 @@ namespace OnlineJewelleryStore.Models
             }
             return -1;
         }
+
+        public CartItem GetItem(int productId)
+        {
+            CartItem cartItem = null;
+            foreach(var item in Items)
+            {
+                if(item.Product.Id == productId)
+                {
+                    cartItem = item;
+                }
+            }
+            return cartItem;
+        }
     }
 }

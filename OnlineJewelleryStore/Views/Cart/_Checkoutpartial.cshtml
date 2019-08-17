@@ -1,0 +1,35 @@
+﻿@model OnlineJewelleryStore.Models.CartItem
+
+<td>
+    <img class="img-responsive" title="click to view product detail"
+            style="cursor:pointer;height:80px;width:100px;"
+            src=@Url.Content(Model.Product.Image) />
+</td>
+<td class="text-primary" style="padding-top:40px">
+    @Html.DisplayFor(modelItem => Model.Product.Name)
+    @*@Ajax.ActionLink(
+        linkText: "Remove",
+        actionName: "RemovefromCart",
+        controllerName: "Cart",
+        routeValues: new { productId = Model.Product.Id},
+        ajaxOptions: new AjaxOptions {
+            UpdateTargetId= Model.Product.Id.ToString(),
+            InsertionMode=InsertionMode.Replace
+        },
+        htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+    )*@
+    @Html.ActionLink(
+        "Remove",
+        "RemovefromCart",
+        "Cart",
+        new { productId = Model.Product.Id },
+        new { @class = "btn btn-primary btn-sm cartButton" }
+    )
+</td>
+<td style="padding-top:40px">
+    @Html.DisplayFor(modelItem => Model.Quantity)
+</td>
+<td class="text-danger" style="padding-top:40px">
+    @Html.DisplayFor(modelItem => Model.TotalPrice)
+</td>
+

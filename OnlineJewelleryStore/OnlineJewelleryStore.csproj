@@ -246,6 +246,7 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Cart\_Checkoutpartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Order\" />

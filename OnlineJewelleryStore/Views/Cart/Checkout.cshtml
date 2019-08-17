@@ -1,77 +1,62 @@
 ﻿@model OnlineJewelleryStore.Models.Cart
 
 @{
-    ViewBag.Title = "Checkout";
+                /**/
+
+                ViewBag.Title = "Checkout";
 }
 
-<div  class="container" style="margin-top:100px;">
-    <table class="table table-responsive table-hover table-bordered">
-        <thead class="alert-info">
-            <tr class="">
-                <th>
-                    @Html.DisplayNameFor(model => model.Items[0].Product.Image)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Items[0].Product.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Items[0].Quantity)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Items[0].Product.Price)
-                </th>
-                @*<th></th>*@
-            </tr>
-        </thead>
+<div class="container" style="margin-top:100px;">
+    @if (Model.Items.Count() > 0)
+    {
+        <table class="table table-responsive table-hover table-bordered">
+            <thead class="alert-info">
+                <tr class="">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Items[0].Product.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Items[0].Product.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Items[0].Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Items[0].Product.Price)
+                    </th>
+                    @*<th></th>*@
+                </tr>
+            </thead>
 
-        @foreach (var item in Model.Items)
-        {
-            <tr style="font-weight: bold">
-                <td>
-                    <img class="img-responsive" title="click to view product detail"
-                         style="cursor:pointer;height:80px;width:100px;"
-                         src=@Url.Content(item.Product.Image) />
-                </td>
-                <td class="text-primary" style="padding-top:40px">
-                    @Html.DisplayFor(modelItem => item.Product.Name)
-                    @Ajax.ActionLink(
-                        linkText: "Remove",
-                        actionName: "RemovefromCart",
-                        controllerName: "Home",
-                        routeValues: new { productId = item.Product.Id},
-                        ajaxOptions: new AjaxOptions {
-                            UpdateTargetId= "cart-details",
-                            InsertionMode=InsertionMode.Replace
-                        },
-                        htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
-                    )
-                </td>
-                <td style="padding-top:40px">
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td class="text-danger" style="padding-top:40px">
-                    @Html.DisplayFor(modelItem => item.TotalPrice)
-                </td>
-            </tr>
+            @foreach (var item in Model.Items)
+            {
+                <tr id="@item.Product.Id" style="font-weight: bold">
+                    @Html.Action("_Checkoutpartial", new { productId = item.Product.Id })
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <h2 style="margin-top:100px">Cart is Empty</h2>
+    }
+    @Html.ActionLink(
+        "Continue Shopping",
+        "Index",
+        "Home",
+        new {},
+        new {
+            @class = "btn btn-primary btn-sm continueButton",
+            @style = "float:left;"
         }
-    </table>
+    )
     @Html.ActionLink(
-              "Continue Shopping",
-              "Index",
-              "Home",
-              new {},
-              new {
-                  @class = "btn btn-primary btn-sm continueButton",
-                  @style = "float:left;"
-              }
-          )
-    @Html.ActionLink(
-              "Buy " + @Model.NumberOfItems + " item(s) - £" + @Model.TotalPrice,
-              "Buy",
-              new {},
-              new {
-                  @class = "btn btn-primary btn-sm buyButton",
-                  @style = "float:right;"
-              }
-          )
+        "Buy " + @Model.NumberOfItems + " item(s) - £" + @Model.TotalPrice,
+        "Buy",
+        new {},
+        new {
+            @class = "btn btn-primary btn-sm buyButton",
+            @style = "float:right;"
+        }
+    )
 </div>
