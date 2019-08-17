@@ -64,5 +64,19 @@ namespace OnlineJewelleryStore.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Member()
+        {
+            return View();
+        }
+
+        public ActionResult MyOrders()
+        {
+            string username = Session["username"].ToString();
+            string password = Session["password"].ToString();
+            Tbl_Member member = mainRepo.GetMember(username, password);
+            List<Tbl_Order> orders = mainRepo.GetOrders(member.Id);
+            return View(orders);
+        }
     }
 }

@@ -79,5 +79,10 @@ namespace OnlineJewelleryStore.Repository
                 cart = (Cart)session["cart"];
             return cart;
         }
+
+        public List<Tbl_Order> GetOrders(int memberId)
+        {
+            return db.Tbl_Order.Where(o => o.MemberId == memberId).ToList();
+        }
     }
 }

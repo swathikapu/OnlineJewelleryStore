@@ -38,7 +38,11 @@ namespace OnlineJewelleryStore.Controllers
                 };
                 mainRepo.SaveOrderDetailsToDB(orderDetails);
             }
-           
+
+            if(Session["cart"] != null)
+            {
+                Session.Remove("cart");
+            }
             return View(order);
         }
     }
