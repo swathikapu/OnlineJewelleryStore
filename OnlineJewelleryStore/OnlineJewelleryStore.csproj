@@ -242,15 +242,13 @@
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Product\_Productpartial.cshtml" />
     <Content Include="Views\Home\_Cartpartial.cshtml" />
-    <Content Include="Views\Cart\Buy.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Cart\_Checkoutpartial.cshtml" />
+    <Content Include="Views\Order\Buy.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Order\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

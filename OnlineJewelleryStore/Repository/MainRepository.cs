@@ -8,7 +8,7 @@ namespace OnlineJewelleryStore.Repository
 {
     public class MainRepository
     {
-        JewelleryDBEntities db = new JewelleryDBEntities();
+        public JewelleryDBEntities db = new JewelleryDBEntities();
         public List<Tbl_Category> GetAllCategories()
         {
             return db.Tbl_Category.ToList();
@@ -33,6 +33,18 @@ namespace OnlineJewelleryStore.Repository
         public void SaveMemberToDB(Tbl_Member member)
         {
             db.Tbl_Member.Add(member);
+            db.SaveChanges();
+        }
+
+        public void SaveOrderToDB(Tbl_Order order)
+        {
+            db.Tbl_Order.Add(order);
+            db.SaveChanges();
+        }
+
+        public void SaveOrderDetailsToDB(Tbl_OrderDetails orderDetails)
+        {
+            db.Tbl_OrderDetails.Add(orderDetails);
             db.SaveChanges();
         }
 
