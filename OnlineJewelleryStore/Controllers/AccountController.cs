@@ -45,6 +45,7 @@ namespace OnlineJewelleryStore.Controllers
             {
                 Session["username"] = username;
                 Session["password"] = password;
+                Session["roleId"] = member.RoleId;
                 if(Session["destination"] == null)
                     return RedirectToAction("Index", "Home");
                 else

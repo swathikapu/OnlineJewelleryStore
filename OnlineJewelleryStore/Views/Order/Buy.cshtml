@@ -6,42 +6,39 @@
 
 <h2>Buy</h2>
 
-<div class="container" style="margin-top:100px">
-    <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-6">
-            <h2>ORDER PLACED</h2>
-            <p>@Model.CreationDate</p>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6">
-            <h2>TOTAL</h2>
-            <p>@Model.Payment</p>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-6">
-            <h2>DISPATCH TO</h2>
-            <p>@Model.Tbl_Member.FirstName + @Model.Tbl_Member.LastName</p>
-        </div>
+<div class="container" style="border: 1px solid gray; border-radius:6px; padding:20px;">
+    <div class="row" style="background-color:lightgray">
         <div class="col-md-3 col-sm-3 col-xs-6">
             <h2>ORDER # @Model.Id</h2>
         </div>
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
+            <h6 style="font-weight:bold;">ORDER PLACED</h6>
+            <p>@Model.CreationDate</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
+            <h6 style="font-weight:bold">TOTAL</h6>
+            <p>@Model.Payment</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
+            <h6 style="font-weight:bold">DISPATCH TO</h6>
+            <p>@Model.Tbl_Member.FirstName @Model.Tbl_Member.LastName</p>
+        </div>
     </div>
-    @foreach(var orderDetails in Model.Tbl_OrderDetails)
+    <br />
+    @foreach (var orderDetails in Model.Tbl_OrderDetails)
     {
-        <div class="row">
+        <div class="row" style="padding-bottom:5px">
             <div class="col-md-3 col-sm-3 col-xs-6">
-                <h2>@orderDetails.Tbl_Product.Name</h2>
-                <h2>@orderDetails.Tbl_Product.Price</h2>
-                <h2>(Qty: @orderDetails.Quantity)</h2>
+                <img class="img-responsive" title="click to view product detail"
+                     style="cursor:pointer;width:40%;border:solid;border-radius:2px"
+                     src=@Url.Content(orderDetails.Tbl_Product.Image) />
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-6">
+                <h5 class="text-primary">@orderDetails.Tbl_Product.Name</h5>
+                <p class="text-danger" style="font-weight:bold">@orderDetails.Tbl_Product.Price</p>
+                <dd>(Qty: @orderDetails.Quantity)</dd>
             </div>
         </div>
     }
-    @Html.ActionLink(
-        "Continue Shopping",
-        "Index",
-        "Home",
-        new {},
-        new {
-            @class = "btn btn-primary btn-sm continueButton",
-            @style = "float:left;"
-        }
-    )
+
 </div>

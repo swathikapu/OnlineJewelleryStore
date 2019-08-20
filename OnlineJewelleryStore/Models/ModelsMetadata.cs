@@ -9,7 +9,7 @@ namespace OnlineJewelleryStore.Models
     [MetadataType(typeof(Tbl_ProductMetaData))]
     public partial class Tbl_Product
     {
-
+        public HttpPostedFileBase ImageFile { get; set; }
     }
     public class Tbl_ProductMetaData
     {

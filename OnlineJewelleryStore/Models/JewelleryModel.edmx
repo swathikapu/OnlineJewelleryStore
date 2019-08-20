@@ -24,6 +24,7 @@
           <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_Order">
           <Key>
@@ -53,14 +54,19 @@
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="IsActive" Type="bit" />
-          <Property Name="IsDeleted" Type="bit" />
           <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="Image" Type="varchar(max)" Nullable="false" />
           <Property Name="IsFeatured" Type="bit" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Tbl_Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK__Tbl_Order__Membe__4D94879B">
           <End Role="Tbl_Member" Type="Self.Tbl_Member" Multiplicity="1" />
@@ -110,12 +116,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Tbl_Member1">
+          <End Role="Tbl_Role" Type="Self.Tbl_Role" Multiplicity="1" />
+          <End Role="Tbl_Member" Type="Self.Tbl_Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tbl_Member">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="JewelleryDBModelStoreContainer">
           <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Member" EntityType="Self.Tbl_Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Order" EntityType="Self.Tbl_Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_OrderDetails" EntityType="Self.Tbl_OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Role" EntityType="Self.Tbl_Role" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Tbl_Order__Membe__4D94879B" Association="Self.FK__Tbl_Order__Membe__4D94879B">
             <End Role="Tbl_Member" EntitySet="Tbl_Member" />
             <End Role="Tbl_Order" EntitySet="Tbl_Order" />
@@ -132,6 +151,10 @@
             <End Role="Tbl_Category" EntitySet="Tbl_Category" />
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
           </AssociationSet>
+          <AssociationSet Name="FK_Tbl_Member1" Association="Self.FK_Tbl_Member1">
+            <End Role="Tbl_Role" EntitySet="Tbl_Role" />
+            <End Role="Tbl_Member" EntitySet="Tbl_Member" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -145,46 +168,10 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Tbl_Product" Relationship="Self.FK__Tbl_Produ__Categ__25869641" FromRole="Tbl_Category" ToRole="Tbl_Product" />
+          <NavigationProperty Name="Tbl_Product" Relationship="JewelleryDBModel.FK__Tbl_Produ__Categ__25869641" FromRole="Tbl_Category" ToRole="Tbl_Product" />
         </EntityType>
-        <EntityType Name="Tbl_Product">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CategoryId" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IsFeatured" Type="Boolean" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="Tbl_Category" Relationship="Self.FK__Tbl_Produ__Categ__25869641" FromRole="Tbl_Product" ToRole="Tbl_Category" />
-          <NavigationProperty Name="Tbl_OrderDetails" Relationship="JewelleryDBModel.FK__Tbl_Order__Produ__4CA06362" FromRole="Tbl_Product" ToRole="Tbl_OrderDetails" />
-        </EntityType>
-        <Association Name="FK__Tbl_Produ__Categ__25869641">
-          <End Role="Tbl_Category" Type="Self.Tbl_Category" Multiplicity="1" />
-          <End Role="Tbl_Product" Type="Self.Tbl_Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tbl_Category">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Tbl_Product">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="JewelleryDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" />
-          <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" />
-          <AssociationSet Name="FK__Tbl_Produ__Categ__25869641" Association="Self.FK__Tbl_Produ__Categ__25869641">
-            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
-            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
-          </AssociationSet>
           <EntitySet Name="Tbl_Member" EntityType="JewelleryDBModel.Tbl_Member" />
           <EntitySet Name="Tbl_Order" EntityType="JewelleryDBModel.Tbl_Order" />
           <EntitySet Name="Tbl_OrderDetails" EntityType="JewelleryDBModel.Tbl_OrderDetails" />
@@ -195,6 +182,16 @@
           <AssociationSet Name="FK__Tbl_Order__Order__4BAC3F29" Association="JewelleryDBModel.FK__Tbl_Order__Order__4BAC3F29">
             <End Role="Tbl_Order" EntitySet="Tbl_Order" />
             <End Role="Tbl_OrderDetails" EntitySet="Tbl_OrderDetails" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Role" EntityType="JewelleryDBModel.Tbl_Role" />
+          <AssociationSet Name="FK_Tbl_Member1" Association="JewelleryDBModel.FK_Tbl_Member1">
+            <End Role="Tbl_Role" EntitySet="Tbl_Role" />
+            <End Role="Tbl_Member" EntitySet="Tbl_Member" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Product" EntityType="JewelleryDBModel.Tbl_Product" />
+          <AssociationSet Name="FK__Tbl_Produ__Categ__25869641" Association="JewelleryDBModel.FK__Tbl_Produ__Categ__25869641">
+            <End Role="Tbl_Category" EntitySet="Tbl_Category" />
+            <End Role="Tbl_Product" EntitySet="Tbl_Product" />
           </AssociationSet>
           <AssociationSet Name="FK__Tbl_Order__Produ__4CA06362" Association="JewelleryDBModel.FK__Tbl_Order__Produ__4CA06362">
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
@@ -212,6 +209,8 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tbl_Order" Relationship="JewelleryDBModel.FK__Tbl_Order__Membe__4D94879B" FromRole="Tbl_Member" ToRole="Tbl_Order" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Role" Relationship="JewelleryDBModel.FK_Tbl_Member1" FromRole="Tbl_Member" ToRole="Tbl_Role" />
         </EntityType>
         <EntityType Name="Tbl_Order">
           <Key>
@@ -261,6 +260,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tbl_Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tbl_Member" Relationship="JewelleryDBModel.FK_Tbl_Member1" FromRole="Tbl_Role" ToRole="Tbl_Member" />
+        </EntityType>
+        <Association Name="FK_Tbl_Member1">
+          <End Type="JewelleryDBModel.Tbl_Role" Role="Tbl_Role" Multiplicity="1" />
+          <End Type="JewelleryDBModel.Tbl_Member" Role="Tbl_Member" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tbl_Member">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tbl_Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsFeatured" Type="Boolean" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Tbl_Category" Relationship="JewelleryDBModel.FK__Tbl_Produ__Categ__25869641" FromRole="Tbl_Product" ToRole="Tbl_Category" />
+          <NavigationProperty Name="Tbl_OrderDetails" Relationship="JewelleryDBModel.FK__Tbl_Order__Produ__4CA06362" FromRole="Tbl_Product" ToRole="Tbl_OrderDetails" />
+        </EntityType>
+        <Association Name="FK__Tbl_Produ__Categ__25869641">
+          <End Type="JewelleryDBModel.Tbl_Category" Role="Tbl_Category" Multiplicity="1" />
+          <End Type="JewelleryDBModel.Tbl_Product" Role="Tbl_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tbl_Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Tbl_Order__Produ__4CA06362">
           <End Type="JewelleryDBModel.Tbl_Product" Role="Tbl_Product" Multiplicity="1" />
           <End Type="JewelleryDBModel.Tbl_OrderDetails" Role="Tbl_OrderDetails" Multiplicity="*" />
@@ -289,27 +337,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Product">
-            <EntityTypeMapping TypeName="JewelleryDBModel.Tbl_Product">
-              <MappingFragment StoreEntitySet="Tbl_Product">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_Member">
             <EntityTypeMapping TypeName="JewelleryDBModel.Tbl_Member">
               <MappingFragment StoreEntitySet="Tbl_Member">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -337,6 +368,30 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Role">
+            <EntityTypeMapping TypeName="JewelleryDBModel.Tbl_Role">
+              <MappingFragment StoreEntitySet="Tbl_Role">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Product">
+            <EntityTypeMapping TypeName="JewelleryDBModel.Tbl_Product">
+              <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

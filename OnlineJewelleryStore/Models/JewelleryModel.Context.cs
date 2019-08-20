@@ -26,9 +26,10 @@ namespace OnlineJewelleryStore.Models
         }
     
         public virtual DbSet<Tbl_Category> Tbl_Category { get; set; }
-        public virtual DbSet<Tbl_Product> Tbl_Product { get; set; }
         public virtual DbSet<Tbl_Member> Tbl_Member { get; set; }
         public virtual DbSet<Tbl_Order> Tbl_Order { get; set; }
         public virtual DbSet<Tbl_OrderDetails> Tbl_OrderDetails { get; set; }
+        public virtual DbSet<Tbl_Role> Tbl_Role { get; set; }
+        public virtual DbSet<Tbl_Product> Tbl_Product { get; set; }
     }
 }

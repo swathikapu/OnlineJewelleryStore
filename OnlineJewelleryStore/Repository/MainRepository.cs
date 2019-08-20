@@ -30,6 +30,17 @@ namespace OnlineJewelleryStore.Repository
             return db.Tbl_Product.Find(productId);
         }
 
+        public Tbl_Category GetCategory(int categoryId)
+        {
+            return db.Tbl_Category.Find(categoryId);
+        }
+
+        public string GetCategoryName(int categoryId)
+        {
+            Tbl_Category category= db.Tbl_Category.Find(categoryId);
+            return category.Name.Replace(" ", "");
+        }
+
         public void SaveMemberToDB(Tbl_Member member)
         {
             db.Tbl_Member.Add(member);
