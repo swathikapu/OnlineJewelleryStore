@@ -1,0 +1,51 @@
+﻿@model OnlineJewelleryStore.Repository.MainRepository
+
+@{
+    ViewBag.Title = "ProductIndex";
+}
+<div class="container">
+    <h2>ProductIndex</h2>
+    <h2>ProductIndex</h2>
+    <h2>ProductIndex</h2>
+    <h2>ProductIndex</h2>
+    <input type="hidden" value="1" id="categorySelectedText" />
+    @{List<SelectListItem> dropDownItems = new List<SelectListItem>(); }
+    @foreach (var category in Model.GetAllCategories())
+    {
+        dropDownItems.Add(
+            new SelectListItem
+            {
+                Text = category.Name,
+                Value = Url.Action(
+                    "ProductIndex", 
+                    "ProductDashboard", 
+                    new { selectedId = category.Id }
+                ),
+                Selected = category.Id == ViewBag.SelectedId
+            });
+    }
+
+    @*@{int selectedValue = Int32.Parse(Request.Form["categorySelectedText"].ToString());}*@
+    <p>@ViewBag.SelectedId</p>
+
+    @Html.DropDownList(
+        "CategoryId",
+        dropDownItems,
+        htmlAttributes: new {
+            @class = "btn btn-primary btn-sm ca",
+            @style = "float:right;",
+            @id = "categoryddl"
+        }
+    )
+</div>
+
+<script>
+    $(function () {
+        $('#categoryddl').change(function () {
+            var url = $(this).val();
+            if (url != null && url != '') {
+                window.location.href = url;
+            }
+        });
+    });
+</script>

@@ -309,6 +309,7 @@
     <Content Include="Views\MemberDashboard\Edit.cshtml" />
     <Content Include="Views\MemberDashboard\Details.cshtml" />
     <Content Include="Views\MemberDashboard\Delete.cshtml" />
+    <Content Include="Views\ProductDashboard\ProductIndex.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

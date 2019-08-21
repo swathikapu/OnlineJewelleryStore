@@ -64,8 +64,8 @@
                         dropDownItems.Add(new SelectListItem
                         {
                             Text = "Product Dashboard",
-                            Value = Url.Action("Index", "ProductDashboard"),
-                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
+                            Value = Url.Action("ProductIndex", "ProductDashboard", new { selectedId = 1}),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("ProductIndex") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
                         });
                         dropDownItems.Add(new SelectListItem
                         {

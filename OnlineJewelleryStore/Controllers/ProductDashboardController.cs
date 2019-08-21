@@ -18,6 +18,11 @@ namespace OnlineJewelleryStore.Controllers
             return View(mainRepo.db.Tbl_Product.ToList());
         }
 
+        public ActionResult ProductIndex(int selectedId)
+        {
+            ViewBag.SelectedId = selectedId;
+            return View(mainRepo);
+        }
         public ActionResult Create()
         {
             return View();
