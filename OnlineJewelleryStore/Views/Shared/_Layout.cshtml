@@ -33,7 +33,6 @@
                 <a class="navbar-brand" href="#">Jewellery Store</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-
                 @if (Session["username"] == null)
                 {
                     <li>
@@ -54,29 +53,32 @@
                 else
                 {
                     List<SelectListItem> dropDownItems = new List<SelectListItem> {
-                                new SelectListItem {
-                                    Text = "Welcome " + Session["username"].ToString().ToUpper(),
-                                    Value = Url.Action("Index", "Home"),
-                                    Selected =true
-                                }
-                            };
+                        new SelectListItem {
+                            Text = "Welcome " + Session["username"].ToString().ToUpper(),
+                            Value = Url.Action("Index", "Home"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Home")
+                        }
+                    };
                     if ((int)Session["roleId"] == 1)
                     {
                         dropDownItems.Add(new SelectListItem
                         {
                             Text = "Admin Dashboard",
-                            Value = Url.Action("Index", "Dashboard")
+                            Value = Url.Action("Index", "Dashboard"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Dashboard")
                         });
                     }
                     dropDownItems.Add(new SelectListItem
                     {
                         Text = "My Orders",
-                        Value = Url.Action("MyOrders", "Account")
+                        Value = Url.Action("MyOrders", "Account"),
+                        Selected = ViewContext.RouteData.Values["action"].ToString().Equals("MyOrders") && ViewContext.RouteData.Values["controller"].ToString().Equals("Account")
                     });
                     dropDownItems.Add(new SelectListItem
                     {
                         Text = "Logout",
-                        Value = Url.Action("Logout", "Account")
+                        Value = Url.Action("Logout", "Account"),
+                        Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Logout") && ViewContext.RouteData.Values["controller"].ToString().Equals("Account")
                     });
                     <li style="padding-top:10px">
                         @Html.DropDownList(
@@ -88,16 +90,6 @@
                                 @id = "urlddl"
                             }
                         )
-                        @*@Html.DropDownList(
-                                "AccountDetails",
-                                new List<SelectListItem>
-                                {
-                                    new SelectListItem { Text = "My Orders", Value = Url.Action("Orders", "Account"), Selected=true },
-                                    new SelectListItem { Text = "Logout", Value = Url.Action("Logout", "Account") },
-                                },
-                                "Test",
-                                new { id = "urlddl" }
-                            )*@
                     </li>
                 }
                 @if (ViewBag.Title != "Checkout" && ViewBag.Title != "Buy")
@@ -109,60 +101,6 @@
                         )
                     </li>
                 }
-
-
-                @*@if (Request.IsAuthenticated)
-                        {
-                            <li class="nav-link"><a href="/account/logout">Logout</a></li>
-                        }
-                        else
-                        {
-                            if (ViewBag.Title == "Login")
-                            {
-                                <li class="nav-link login"><a class="login" href="/account/login">Login</a></li>
-                            }
-                            else
-                            {
-                                <li class="nav-link login"><a class="login" href="/account/login">Login</a></li>
-                            }
-                        }
-
-                        @if (Request.IsAuthenticated && !User.Identity.Name.Equals("admin"))
-
-                        {
-                            if (ViewBag.Title == "User Profile" || ViewBag.Title == "Orders")
-                            {
-                                <li class="active nav-link">@Html.Action("UserNavPartial", "Account", new { area = "" })</li>
-                            }
-                            else
-                            {
-                                <li class="nav-link">@Html.Action("UserNavPartial", "Account", new { area = "" })</li>
-                            }
-                        }
-                    </ul>
-
-                    @if (Request.IsAuthenticated && User.Identity.Name.Equals("admin"))
-                    {
-
-                        <button type="button" class=" btn-admin btn btn-info ">@Html.ActionLink("Admin Area", "Index", "Dashboard", new { area = "Admin" }, null) </button>
-                    }
-                    else
-                    {
-                        if (ViewBag.Title != "Cart Details")
-                        {
-
-                            @Html.Action("CartPartial", "Cart")
-
-                        }
-                    }*@
-
-
-
-
-
-
-
-
             </ul>
         </div>
     </nav>
@@ -179,6 +117,8 @@
 <script>
     $(function () {
         $('#urlddl').change(function () {
+            //var urlddl_text = $("#urlddl option:selected").text();
+            //$("#hidden1").val(urlddl_text);
             var url = $(this).val();
             if (url != null && url != '') {
                 window.location.href = url;
