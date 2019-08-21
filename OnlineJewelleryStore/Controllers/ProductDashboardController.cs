@@ -10,7 +10,7 @@ using OnlineJewelleryStore.Repository;
 
 namespace OnlineJewelleryStore.Controllers
 {
-    public class DashboardController : Controller
+    public class ProductDashboardController : Controller
     {
         MainRepository mainRepo = new MainRepository();
         public ActionResult Index()
@@ -18,14 +18,14 @@ namespace OnlineJewelleryStore.Controllers
             return View(mainRepo.db.Tbl_Product.ToList());
         }
 
-        public ActionResult CreateProduct()
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateProduct(Tbl_Product product)
+        public ActionResult Create(Tbl_Product product)
         {
 
             TryUpdateModel(product);

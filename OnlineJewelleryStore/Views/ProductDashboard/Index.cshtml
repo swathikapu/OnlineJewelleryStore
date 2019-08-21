@@ -9,7 +9,32 @@
 
 <div class="container">
     <p>
-        @Html.ActionLink("Create New", "CreateProduct", new { }, new { @class = "btn btn-primary btn-sm createButton" })
+        @Html.ActionLink("Create New", "Create", new { }, new { @class = "btn btn-primary btn-sm createButton" })
+        @*<li>
+            @Html.DropDownList(
+                          "Dashboard",
+                          new List<SelectListItem> {
+                                    new SelectListItem {
+                                        Text = "ProductDashboard" ,
+                                        Value = Url.Action("Index", "ProductDashboard"),
+                                        Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
+                                                        },
+
+                                    new SelectListItem {
+                                        Text = "MemberDashboard " ,
+                                        Value = Url.Action("Index", "MemberDashboard"),
+                                        Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("MemberDashboard")
+
+                                                        }
+                          },
+                          new
+                            {
+                            @class = "btn btn-primary btn-sm",
+                            @style = "inline-block",
+                            @id = "urlddl"
+                            }
+                    )
+        </li>*@
     </p>
     <table class="table" id="franchiseTable">
         <thead>
@@ -90,3 +115,16 @@
         $('#franchiseTable').DataTable();
     });
 </script>
+<script>
+    $(function () {
+        $('#urlddl').change(function () {
+            //var urlddl_text = $("#urlddl option:selected").text();
+            //$("#hidden1").val(urlddl_text);
+            var url = $(this).val();
+            if (url != null && url != '') {
+                window.location.href = url;
+            }
+        });
+    });
+</script>
+

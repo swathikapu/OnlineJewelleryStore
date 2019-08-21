@@ -63,10 +63,22 @@
                     {
                         dropDownItems.Add(new SelectListItem
                         {
-                            Text = "Admin Dashboard",
-                            Value = Url.Action("Index", "Dashboard"),
-                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Dashboard")
+                            Text = "Product Dashboard",
+                            Value = Url.Action("Index", "ProductDashboard"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
                         });
+                        dropDownItems.Add(new SelectListItem
+                        {
+                            Text = "Member Dashboard",
+                            Value = Url.Action("Index", "MemberDashboard"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("MemberDashboard")
+                        });
+                        /*dropDownItems.Add(new SelectListItem
+                        {
+                            Text = "Admin Dashboard",
+                            Value = Url.Action("Index", "ProductDashboard"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
+                        });*/
                     }
                     dropDownItems.Add(new SelectListItem
                     {

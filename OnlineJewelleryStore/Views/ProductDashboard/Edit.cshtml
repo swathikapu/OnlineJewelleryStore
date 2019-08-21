@@ -8,7 +8,7 @@
 
 <h3 class="text-info" style="margin-top:100px;">Update @Model.Name Franchise</h3>
 <br />
-@using (Html.BeginForm("Edit", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data", id = "editForm" }))
+@using (Html.BeginForm("Edit", "ProductDashboard", FormMethod.Post, new { enctype = "multipart/form-data", id = "editForm" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal edit-form">
@@ -107,7 +107,7 @@
                     @Html.ActionLink(
                         "Back",
                         "Index",
-                        "Dashboard",
+                        "ProductDashboard",
                         new { },
                         new {
                             @class = "btn btn-primary btn-sm backButton",

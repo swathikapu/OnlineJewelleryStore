@@ -8,7 +8,7 @@
 <link href="~/Content/MainLayout.css" rel="stylesheet" />
 <h3 class="text-success">Create Product</h3>
 
-@using (Html.BeginForm("CreateProduct", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data", id = "createForm" }))
+@using (Html.BeginForm("CreateProduct", "ProductDashboard", FormMethod.Post, new { enctype = "multipart/form-data", id = "createForm" }))
 {
     @Html.AntiForgeryToken()
     <div align="center">

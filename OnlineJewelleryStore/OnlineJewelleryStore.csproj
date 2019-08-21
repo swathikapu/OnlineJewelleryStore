@@ -136,8 +136,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ProductDashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MemberDashboardController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
@@ -298,11 +299,16 @@
     <Content Include="Views\Cart\_Checkoutpartial.cshtml" />
     <Content Include="Views\Order\Buy.cshtml" />
     <Content Include="Views\Account\MyOrders.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Dashboard\CreateProduct.cshtml" />
-    <Content Include="Views\Dashboard\Edit.cshtml" />
-    <Content Include="Views\Dashboard\Details.cshtml" />
-    <Content Include="Views\Dashboard\Delete.cshtml" />
+    <Content Include="Views\ProductDashboard\Index.cshtml" />
+    <Content Include="Views\ProductDashboard\Create.cshtml" />
+    <Content Include="Views\ProductDashboard\Edit.cshtml" />
+    <Content Include="Views\ProductDashboard\Details.cshtml" />
+    <Content Include="Views\ProductDashboard\Delete.cshtml" />
+    <Content Include="Views\MemberDashboard\Index.cshtml" />
+    <Content Include="Views\MemberDashboard\Create.cshtml" />
+    <Content Include="Views\MemberDashboard\Edit.cshtml" />
+    <Content Include="Views\MemberDashboard\Details.cshtml" />
+    <Content Include="Views\MemberDashboard\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
