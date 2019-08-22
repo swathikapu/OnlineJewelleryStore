@@ -86,5 +86,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-sm editButton" })
-    @Html.ActionLink("Back", "Index", new { }, new { @class = "btn btn-primary btn-sm backButton", @style = "float:left" })
+    @Html.ActionLink("Back", "ProductIndex","ProductDashboard" ,new { selectedId = Model.CategoryId }, new { @class = "btn btn-primary btn-sm backButton", @style = "float:left" })
 </p>

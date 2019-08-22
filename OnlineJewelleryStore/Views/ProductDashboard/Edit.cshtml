@@ -106,9 +106,9 @@
                     <input type="submit" value="Save" class="btn btn-primary btn-sm saveButton" />
                     @Html.ActionLink(
                         "Back",
-                        "Index",
+                        "ProductIndex",
                         "ProductDashboard",
-                        new { },
+                        new { selectedId = Model.CategoryId },
                         new {
                             @class = "btn btn-primary btn-sm backButton",
                         }

@@ -5,10 +5,7 @@
 }
 <div class="container">
     <h2>ProductIndex</h2>
-    <h2>ProductIndex</h2>
-    <h2>ProductIndex</h2>
-    <h2>ProductIndex</h2>
-    <input type="hidden" value="1" id="categorySelectedText" />
+    <br />
     @{List<SelectListItem> dropDownItems = new List<SelectListItem>(); }
     @foreach (var category in Model.GetAllCategories())
     {
@@ -17,26 +14,73 @@
             {
                 Text = category.Name,
                 Value = Url.Action(
-                    "ProductIndex", 
-                    "ProductDashboard", 
+                    "ProductIndex",
+                    "ProductDashboard",
                     new { selectedId = category.Id }
                 ),
                 Selected = category.Id == ViewBag.SelectedId
-            });
+            }
+        );
     }
-
-    @*@{int selectedValue = Int32.Parse(Request.Form["categorySelectedText"].ToString());}*@
-    <p>@ViewBag.SelectedId</p>
-
+    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary" >Category: </h4>
     @Html.DropDownList(
         "CategoryId",
         dropDownItems,
         htmlAttributes: new {
             @class = "btn btn-primary btn-sm ca",
-            @style = "float:right;",
             @id = "categoryddl"
         }
     )
+    @{ 
+        string categoryName = Model.GetCategory(ViewBag.SelectedId).Name;
+        categoryName = categoryName.Remove(categoryName.Length - 1);
+    }
+    @Html.ActionLink(
+        "Create New " + categoryName,
+        "Create",
+        new { selectedId = ViewBag.SelectedId},
+        new {
+            @class = "btn btn-primary btn-sm createButton",
+            @style = "float:right"
+        }
+    )
+    <br />
+    <br />
+    <div class="row product-container">
+        @foreach (var product in Model.GetProductsByCategoryId(ViewBag.SelectedId))
+        {
+            <div class="col-md-3 col-sm-4 col-xs-10" style="margin-bottom:8px">
+                <div class="thumbnail product-item" style="height:300px">
+                    <img class="img-responsive" title="click to view product detail"
+                         style="cursor:pointer;height:160px;width:100%;"
+                         src=@Url.Content(product.Image) />
+                    <div class="caption">
+                        <h5 class="text-primary">@product.Name</h5>
+                        <p class="text-danger" style="font-weight:bold">£@product.Price</p>
+                        <div class="product-item-badge">New</div>
+                    </div>
+                    @Html.ActionLink(
+                        "Edit",
+                        "Edit",
+                        new { id = product.Id },
+                        new { @class = "responsive-button btn btn-primary btn-sm editButton" }
+                    )
+                    @Html.ActionLink(
+                        "Details",
+                        "Details",
+                        new { id = product.Id },
+                        new { @class = "responsive-button btn btn-primary btn-sm detailsButton" }
+                    )
+                    @Html.ActionLink(
+                        "Delete",
+                        "Delete",
+                        new { id = product.Id },
+                        new { @class = "responsive-button btn btn-primary btn-sm deleteButton" }
+                    )
+                </div>
+            </div>
+        }
+    </div>
 </div>
 
 <script>
@@ -49,3 +93,4 @@
         });
     });
 </script>
+

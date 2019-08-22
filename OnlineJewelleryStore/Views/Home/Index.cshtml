@@ -89,8 +89,7 @@
             @Html.ActionLink(
                 "View All " + @category.Name,
                 "Products",
-                "Product",
-                new { categoryId = category.Id},
+                new { Id = category.Id},
                 new {
                     @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",
                     @style = "float:right;"

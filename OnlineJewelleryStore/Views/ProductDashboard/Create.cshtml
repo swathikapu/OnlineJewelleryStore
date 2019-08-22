@@ -8,7 +8,7 @@
 <link href="~/Content/MainLayout.css" rel="stylesheet" />
 <h3 class="text-success">Create Product</h3>
 
-@using (Html.BeginForm("CreateProduct", "ProductDashboard", FormMethod.Post, new { enctype = "multipart/form-data", id = "createForm" }))
+@using (Html.BeginForm("Create", "ProductDashboard", FormMethod.Post, new { enctype = "multipart/form-data", id = "createForm" }))
 {
     @Html.AntiForgeryToken()
     <div align="center">
@@ -107,8 +107,9 @@
                     <input type="submit" value="Create" class="btn btn-primary btn-sm createButton" />
                     @Html.ActionLink(
                         "Back",
-                        "Index",
-                        new { },
+                        "ProductIndex",
+                        "ProductDashboard",
+                        new { selectedId = ViewBag.SelectedId },
                         new {
                             @class = "btn btn-primary btn-sm backButton",
                         }

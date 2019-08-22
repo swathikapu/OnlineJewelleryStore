@@ -13,18 +13,14 @@ namespace OnlineJewelleryStore.Controllers
     public class ProductDashboardController : Controller
     {
         MainRepository mainRepo = new MainRepository();
-        public ActionResult Index()
-        {
-            return View(mainRepo.db.Tbl_Product.ToList());
-        }
-
         public ActionResult ProductIndex(int selectedId)
         {
             ViewBag.SelectedId = selectedId;
             return View(mainRepo);
         }
-        public ActionResult Create()
+        public ActionResult Create(int selectedId)
         {
+            ViewBag.SelectedId = selectedId;
             return View();
         }
 
@@ -96,7 +92,7 @@ namespace OnlineJewelleryStore.Controllers
             {
                 mainRepo.db.Entry(productInDb).State = EntityState.Modified;
                 mainRepo.db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductIndex", new { selectedId = product.CategoryId });
             }
             return View(productInDb);
         }
