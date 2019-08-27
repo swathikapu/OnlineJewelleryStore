@@ -4,14 +4,11 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal" style="padding:50px;">
-
+    <div class="form-horizontal" style="padding:30px">
+        <h2 class="text-primary text-capitalize">Login</h2>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         <div class="form-group">
