@@ -38,7 +38,7 @@ namespace OnlineJewelleryStore.Controllers
                 product.ImageFile.SaveAs(Server.MapPath(imagePath));
                 mainRepo.db.Tbl_Product.Add(product);
                 mainRepo.db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("ProductIndex", new { selectedId = product.CategoryId });
             }
 
             return View(product);
@@ -132,7 +132,7 @@ namespace OnlineJewelleryStore.Controllers
             Tbl_Product product = mainRepo.db.Tbl_Product.Find(id);
             mainRepo.db.Tbl_Product.Remove(product);
             mainRepo.db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductIndex", new { selectedId = product.CategoryId });
         }
 
         protected override void Dispose(bool disposing)

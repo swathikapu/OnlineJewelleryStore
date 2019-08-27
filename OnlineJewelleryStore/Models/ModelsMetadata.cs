@@ -15,12 +15,24 @@ namespace OnlineJewelleryStore.Models
     {
         [DataType(DataType.Currency)]
         public Nullable<decimal> Price { get; set; }
+
+        [Required(ErrorMessage = "Please enter your  Name")]
+        [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please enter description")]
+        [RegularExpression(@"^[a-zA-Z][a-zA-Z\s]*$", ErrorMessage = "Please enter alphabets only")]
+        public string Description { get; set; }
+
+        [Required(ErrorMessage = "Please enter the Quantity")]
+        [RegularExpression(@"^\b[1-9]\d{3}\b", ErrorMessage = "Please enter digits only")]
+        public int Quantity { get; set; }
     }
 
     [MetadataType(typeof(Tbl_MemberMetaData))]
     public partial class Tbl_Member
     {
-       
+
     }
     public class Tbl_MemberMetaData
     {
