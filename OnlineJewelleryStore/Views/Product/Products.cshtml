@@ -6,23 +6,30 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="container" style="padding-top:150px;">
-        <div class="row product-container">
-            @foreach (var product in Model)
-            {
-                @Html.Action("_Productpartial", new { id = product.Id })
-            }
+<div class="container" style="padding-top:30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header bg-primary text-center text-capitalize">
+                <h2 class=" category-heading">@ViewBag.categoryName</h2>
+            </div>
         </div>
-        @Html.ActionLink(
-            "Back to Home Page ",
-            "Index",
-            "Home",
-            new {},
-            new {
-                @class = "btn btn-primary btn-sm backButton",
-                @style = "float:right;"
-            }
-        )
     </div>
+    <div class="row product-container">
+        @foreach (var product in Model)
+        {
+            @Html.Action("_Productpartial", new { id = product.Id })
+        }
+    </div>
+    @Html.ActionLink(
+        "Back to Home Page ",
+        "Index",
+        "Home",
+        new {},
+        new {
+            @class = "btn btn-primary btn-sm backButton",
+            @style = "float:right;"
+        }
+    )
+</div>
 }
 

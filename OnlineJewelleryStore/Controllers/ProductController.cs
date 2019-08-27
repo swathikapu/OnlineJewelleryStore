@@ -14,6 +14,8 @@ namespace OnlineJewelleryStore.Controllers
         public ActionResult Products(int categoryId)
         {
             List<Tbl_Product> products = mainRepo.GetProductsByCategoryId(categoryId);
+            Tbl_Category category = mainRepo.GetCategory(categoryId);
+            ViewBag.categoryName = category.Name;
             return View(products);
         }
 

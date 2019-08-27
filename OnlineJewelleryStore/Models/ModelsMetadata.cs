@@ -25,7 +25,7 @@ namespace OnlineJewelleryStore.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Please enter the Quantity")]
-        [RegularExpression(@"^\b[1-9]\d{3}\b", ErrorMessage = "Please enter digits only")]
+        [RegularExpression(@"^\d+", ErrorMessage = "Please enter digits only")]
         public int Quantity { get; set; }
     }
 

@@ -3,9 +3,14 @@
 @{
     ViewBag.Title = "ProductIndex";
 }
-<div class="container">
-    <h2>ProductIndex</h2>
-    <br />
+<div class="container" style="padding-top:30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header bg-primary text-center text-capitalize">
+                <h2 class=" category-heading">Product Admin Dashboard</h2>
+            </div>
+        </div>
+    </div>
     @{List<SelectListItem> dropDownItems = new List<SelectListItem>(); }
     @foreach (var category in Model.GetAllCategories())
     {
@@ -22,7 +27,7 @@
             }
         );
     }
-    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary" >Category: </h4>
+    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Category: </h4>
     @Html.DropDownList(
         "CategoryId",
         dropDownItems,
@@ -31,7 +36,7 @@
             @id = "categoryddl"
         }
     )
-    @{ 
+    @{
         string categoryName = Model.GetCategory(ViewBag.SelectedId).Name;
         categoryName = categoryName.Remove(categoryName.Length - 1);
     }
@@ -41,7 +46,6 @@
         new { selectedId = ViewBag.SelectedId},
         new {
             @class = "btn btn-primary btn-sm createButton",
-            @style = "float:right"
         }
     )
     <br />

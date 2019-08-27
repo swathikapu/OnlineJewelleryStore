@@ -27,93 +27,120 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse my-navbar navbar-fixed-top" style="border-radius:0px;margin-bottom:0px;color:white">
-        <div class="container-fluid">
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" style="color:white">
+                    <li>Test</li>
+                    <li>Test2</li>
+                    <li>Test3</li>
+                </ul>
+            </div>
+        </div>
+    </div>*@
+    <nav class="navbar navbar-inverse my-navbar navbar-fixed-top">
+        <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Jewellery Store</a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                @if (Session["username"] == null)
-                {
-                    <li>
-                        @Html.ActionLink(
-                            "Sign Up",
-                            "SignUp",
-                            "Account"
-                        )
-                    </li>
-                    <li>
-                        @Html.ActionLink(
-                             "Login",
-                             "Login",
-                             "Account"
-                         )
-                    </li>
-                }
-                else
-                {
-                    List<SelectListItem> dropDownItems = new List<SelectListItem> {
-                        new SelectListItem {
-                            Text = "Welcome " + Session["username"].ToString().ToUpper(),
-                            Value = Url.Action("Index", "Home"),
-                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Home")
-                        }
-                    };
-                    if ((int)Session["roleId"] == 1)
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Session["username"] == null)
                     {
-                        dropDownItems.Add(new SelectListItem
-                        {
-                            Text = "Product Dashboard",
-                            Value = Url.Action("ProductIndex", "ProductDashboard", new { selectedId = 1}),
-                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("ProductIndex") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
-                        });
-                        dropDownItems.Add(new SelectListItem
-                        {
-                            Text = "Member Dashboard",
-                            Value = Url.Action("Index", "MemberDashboard"),
-                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("MemberDashboard")
-                        });
-                        /*dropDownItems.Add(new SelectListItem
-                        {
-                            Text = "Admin Dashboard",
-                            Value = Url.Action("Index", "ProductDashboard"),
-                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
-                        });*/
+                        <li>
+                            @Html.ActionLink(
+                                "Sign Up",
+                                "SignUp",
+                                "Account"
+                            )
+                        </li>
+                        <li>
+                            @Html.ActionLink(
+                                 "Login",
+                                 "Login",
+                                 "Account"
+                             )
+                        </li>
                     }
-                    dropDownItems.Add(new SelectListItem
+                    else
                     {
-                        Text = "My Orders",
-                        Value = Url.Action("MyOrders", "Account"),
-                        Selected = ViewContext.RouteData.Values["action"].ToString().Equals("MyOrders") && ViewContext.RouteData.Values["controller"].ToString().Equals("Account")
-                    });
-                    dropDownItems.Add(new SelectListItem
+                        List<SelectListItem> dropDownItems = new List<SelectListItem> {
+                                        new SelectListItem {
+                                            Text = "Welcome " + Session["username"].ToString().ToUpper(),
+                                            Value = Url.Action("Index", "Home"),
+                                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Home")
+                                        }
+                                    };
+                        if ((int)Session["roleId"] == 1)
+                        {
+                            dropDownItems.Add(new SelectListItem
+                            {
+                                Text = "Product Dashboard",
+                                Value = Url.Action("ProductIndex", "ProductDashboard", new { selectedId = 1 }),
+                                Selected = ViewContext.RouteData.Values["action"].ToString().Equals("ProductIndex") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
+                            });
+                            dropDownItems.Add(new SelectListItem
+                            {
+                                Text = "Member Dashboard",
+                                Value = Url.Action("Index", "MemberDashboard"),
+                                Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("MemberDashboard")
+                            });
+                            /*dropDownItems.Add(new SelectListItem
+                            {
+                                Text = "Admin Dashboard",
+                                Value = Url.Action("Index", "ProductDashboard"),
+                                Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("ProductDashboard")
+                            });*/
+                        }
+                        dropDownItems.Add(new SelectListItem
+                        {
+                            Text = "My Orders",
+                            Value = Url.Action("MyOrders", "Account"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("MyOrders") && ViewContext.RouteData.Values["controller"].ToString().Equals("Account")
+                        });
+                        dropDownItems.Add(new SelectListItem
+                        {
+                            Text = "Logout",
+                            Value = Url.Action("Logout", "Account"),
+                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Logout") && ViewContext.RouteData.Values["controller"].ToString().Equals("Account")
+                        });
+                        <li style="padding-top:10px">
+                            @Html.DropDownList(
+                                "AccountDetails",
+                                dropDownItems,
+                                new {
+                                    @class = "btn btn-primary btn-sm",
+                                    @style ="inline-block",
+                                    @id = "urlddl"
+                                }
+                            )
+                        </li>
+                    }
+                    @if (ViewBag.Title != "Checkout" && ViewBag.Title != "Buy")
                     {
-                        Text = "Logout",
-                        Value = Url.Action("Logout", "Account"),
-                        Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Logout") && ViewContext.RouteData.Values["controller"].ToString().Equals("Account")
-                    });
-                    <li style="padding-top:10px">
-                        @Html.DropDownList(
-                            "AccountDetails",
-                            dropDownItems,
-                            new {
-                                @class = "btn btn-primary btn-sm",
-                                @style ="inline-block",
-                                @id = "urlddl"
-                            }
-                        )
-                    </li>
-                }
-                @if (ViewBag.Title != "Checkout" && ViewBag.Title != "Buy")
-                {
-                    <li style="padding-top:10px">
-                        @Html.Action(
-                            "_Cartpartial",
-                            "Home"
-                        )
-                    </li>
-                }
-            </ul>
+                        <li style="padding-top:10px">
+                            @Html.Action(
+                                "_Cartpartial",
+                                "Home"
+                            )
+                        </li>
+                    }
+                </ul>
+            </div>
+
         </div>
     </nav>
     @RenderBody()
