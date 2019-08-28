@@ -44,7 +44,7 @@ namespace OnlineJewelleryStore.Models
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
         public string LastName { get; set; }
 
-        [Display(Name = "Email address")]
+        [Display(Name = "Email")]
         [Required(ErrorMessage = "The email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
