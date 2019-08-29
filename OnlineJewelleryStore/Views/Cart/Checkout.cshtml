@@ -1,16 +1,21 @@
 ﻿@model OnlineJewelleryStore.Models.Cart
 
 @{
-                /**/
-
-                ViewBag.Title = "Checkout";
+    ViewBag.Title = "Checkout";
 }
 
-<div class="container" style="margin-top:100px;">
+<div class="form-control-static" style="padding:30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header bg-primary text-center text-capitalize">
+                <h2 class=" category-heading">Checkout</h2>
+            </div>
+        </div>
+    </div>
     @if (Model.Items.Count() > 0)
     {
         <table class="table table-responsive table-hover table-bordered">
-            <thead class="alert-info">
+            <thead class="alert-info" style="background-color:#A7BACE;">
                 <tr class="">
                     <th>
                         @Html.DisplayNameFor(model => model.Items[0].Product.Image)
