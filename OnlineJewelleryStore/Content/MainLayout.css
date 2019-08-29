@@ -26,9 +26,8 @@ h2,
 h3,
 h4,
 h5,
-h6
-{
-    font-family:'Roboto condensed' sans-serif;
+h6 {
+    font-family: 'Zilla Slab', serif;
 }
 
 my-navbar {
@@ -591,3 +590,11 @@ ul ul, ol ul {
     #createAccount a:hover {
         color: mediumaquamarine !important;
     }
+
+.div-center {
+    padding-top: 50px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}

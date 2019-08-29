@@ -4,11 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Tbl_Member</h4>
-    <hr />
+<div class="form-control-static" style="padding:30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header bg-primary text-center text-capitalize">
+                <h2 class=" category-heading">Member Details</h2>
+            </div>
+        </div>
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
@@ -57,10 +60,28 @@
         <dd>
             @Html.DisplayFor(model => model.Tbl_Role.Role)
         </dd>
-
     </dl>
+    <div class="form-group">
+        <div class="col-md-12" style="padding-top:10px">
+            @Html.ActionLink(
+                "Edit",
+                "Edit",
+                "MemberDashboard",
+                new { id = Model.Id},
+                new {
+                    @class = "btn btn-primary btn-sm editButton"
+                }
+            )
+            @Html.ActionLink(
+                "Back",
+                "Index",
+                "MemberDashboard",
+                new { },
+                new {
+                    @class = "btn btn-primary btn-sm backButton"
+                }
+            )
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+</div>

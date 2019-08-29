@@ -4,69 +4,85 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Tbl_Member</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tbl_Role.Role)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tbl_Role.Role)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-control-static" style="padding:30px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header bg-danger text-center">
+                    <h2 class=" category-heading">Delete Member</h2>
+                </div>
+            </div>
         </div>
-    }
-</div>
+        <h3>Are you sure you want to delete @Model.FirstName @Model.LastName Account?</h3>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tbl_Role.Role)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tbl_Role.Role)
+            </dd>
+
+        </dl>
+
+        <div class="form-group">
+            <div class="col-md-12" style="padding-top:10px">
+                <input type="submit" value="Delete" class="btn btn-primary btn-sm deleteButton" />
+                @Html.ActionLink(
+                    "Back",
+                    "Index",
+                    "MemberDashboard",
+                    new { },
+                    new {
+                        @class = "btn btn-primary btn-sm backButton"
+                    }
+                )
+            </div>
+        </div>
+    </div>
+
+}
+
