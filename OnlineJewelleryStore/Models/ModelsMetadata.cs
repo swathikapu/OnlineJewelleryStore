@@ -16,11 +16,11 @@ namespace OnlineJewelleryStore.Models
         [DataType(DataType.Currency)]
         public Nullable<decimal> Price { get; set; }
 
-        [Required(ErrorMessage = "Please enter your  Name")]
-        [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
+        [Required(ErrorMessage = "Please enter Product Name")]
+        [RegularExpression(@"^[a-zA-Z][a-zA-Z\s]*$", ErrorMessage = "Please enter alphabets only")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please enter description")]
+        [Required(ErrorMessage = "Please enter Product Description")]
         [RegularExpression(@"^[a-zA-Z][a-zA-Z\s]*$", ErrorMessage = "Please enter alphabets only")]
         public string Description { get; set; }
 

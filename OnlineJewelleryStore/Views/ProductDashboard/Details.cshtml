@@ -3,21 +3,22 @@
 @{
     ViewBag.Title = "Details";
 }
-<a href="~/Repository/MainRepository.cs">~/Repository/MainRepository.cs</a>
 
-
-<div>
-
-    <dl class="dl-horizontal" style="margin-top:100px;">
-
+<div class="form-control-static" style="padding:30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header bg-primary text-center">
+                <h2 class=" category-heading">@Model.Name Details</h2>
+            </div>
+        </div>
+    </div>
+    <dl class="dl-horizontal">
         <div class="logo-div">
-
             <dd>
                 <img src="@Url.Content(Model.Image)" width="200" height="200" />
             </dd>
-
         </div>
-        <div class ="details-div">
+        <div class="details-div">
             <dt>
                 @Html.DisplayNameFor(model => model.Name)
             </dt>
@@ -81,10 +82,11 @@
             <dd>
                 @Html.DisplayFor(model => model.Tbl_Category.Name)
             </dd>
-</div>
+        </div>
     </dl>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-sm editButton" })
+        @Html.ActionLink("Back", "ProductIndex", "ProductDashboard", new { selectedId = Model.CategoryId }, new { @class = "btn btn-primary btn-sm backButton", @style = "float:left" })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary btn-sm editButton" })
-    @Html.ActionLink("Back", "ProductIndex","ProductDashboard" ,new { selectedId = Model.CategoryId }, new { @class = "btn btn-primary btn-sm backButton", @style = "float:left" })
-</p>
+
