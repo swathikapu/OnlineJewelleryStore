@@ -1,17 +1,24 @@
 ﻿
 @import url('font-awesome.css');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300');
+@import url('https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap');
 
 body {
     margin: 0;
     padding-bottom: 20px;
-    font-family: 'Roboto condensed' sans-serif;
+    font-family: 'Zilla Slab', serif;
     font-size: 14px;
     line-height: 16px;
     color: #333;
     background: #fff;
     overflow-x: hidden;
     scrollbar-face-color: #121212;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: auto;
 }
 
 h1,
@@ -554,3 +561,33 @@ input[type=file] {
 .create-form {
     text-align: center;
 }
+
+/*Login page styles*/
+.guestInfo {
+    background-color: #7e8987;
+    color: white !important;
+    font-size: large;
+    text-align: center;
+    padding: 5px;
+}
+
+.adminInfo {
+    background-color: #4b4a67;
+    color: white !important;
+    font-size: large;
+    text-align: center;
+    padding: 5px;
+}
+ul ul, ol ul {
+    list-style-type: none !important;
+    padding-left: 1em;
+}
+
+#createAccount a {
+    font-size: 20px !important;
+    color: #E59866 !important;
+}
+
+    #createAccount a:hover {
+        color: mediumaquamarine !important;
+    }

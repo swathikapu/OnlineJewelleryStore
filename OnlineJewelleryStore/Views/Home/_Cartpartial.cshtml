@@ -3,7 +3,7 @@
 <div class="ajaxcart" id="cart-details">
     <div class="checkoutName">
         @Html.ActionLink(
-            "Checkout " + @Model.NumberOfItems + " item(s) - £" + @Model.TotalPrice, 
+            @Model.NumberOfItems + " item(s) - £" + @Model.TotalPrice, 
             "Checkout",
             "Cart",
             new { }, 

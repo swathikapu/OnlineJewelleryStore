@@ -40,21 +40,21 @@ namespace OnlineJewelleryStore.Models
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Please enter your first name")]
+        [Required(ErrorMessage = "Please enter your last name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
         public string LastName { get; set; }
 
-        [Display(Name = "Email")]
+        [Display(Name="Email")]
         [Required(ErrorMessage = "The email address is required")]
-        [EmailAddress(ErrorMessage = "Invalid Email Address")]
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Please enter your User name")]
+        [Required(ErrorMessage = "Please enter your user name")]
         [RegularExpression(@"^(([A-Za-z]+))$", ErrorMessage = "Please enter alphabets only")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(18, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(18, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
         //[RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage = "Please enter alphabets only")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]

@@ -22,9 +22,13 @@ namespace OnlineJewelleryStore.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SignUp(Tbl_Member member)
         {
+            member.RoleId = 2;    // user account.
             TryUpdateModel(member);
             if (ModelState.IsValid)
             {
+                Session["username"] = member.UserName;
+                Session["password"] = member.Password;
+                Session["roleId"] = member.RoleId;
                 mainRepo.SaveMemberToDB(member);
                 return RedirectToAction("Index", "Home");
             }
