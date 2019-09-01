@@ -164,6 +164,7 @@
       <DependentUpon>JewelleryModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ModelsMetadata.cs" />
+    <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\Tbl_Category.cs">
       <DependentUpon>JewelleryModel.tt</DependentUpon>
     </Compile>
@@ -309,6 +310,8 @@
     <Content Include="Views\MemberDashboard\Details.cshtml" />
     <Content Include="Views\MemberDashboard\Delete.cshtml" />
     <Content Include="Views\ProductDashboard\ProductIndex.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Product\ProductDetails2.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

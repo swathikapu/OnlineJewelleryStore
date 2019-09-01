@@ -1,0 +1,92 @@
+﻿@model OnlineJewelleryStore.Models.Tbl_Product
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+<div class="form-control-static" style="padding:30px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header bg-primary text-center">
+                <h2 class=" category-heading">@Model.Name</h2>
+            </div>
+        </div>
+    </div>
+    <dl class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-3" style="text-align:center">
+                <img src="@Url.Content(Model.Image)"
+                     width="200"
+                     height="200"
+                     style="border: 3px solid gray; border-radius:6px;" />
+            </div>
+            <div class="col-md-9" style="margin-top:10px;text-align:justify;">
+                @{
+                    string[] words = Model.Description.Split('£');
+                    foreach (var word in words)
+                    {
+                        <p>@word</p>
+                        <br />
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div style="float:right; margin-right:10px;">
+                    <p style="display:inline-block;">Price:&nbsp;&nbsp;&nbsp;</p>
+                    <h4 class="text-danger" style="display:inline-block;font-weight:bold;">@Html.DisplayFor(modelItem => Model.Price)</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div style="float:right; margin-right:10px;">
+                    <p style="display:inline-block;">Quantity: </p>
+                    <div style="display:inline-block;">
+                        @Html.DropDownList("Quantities", new List<SelectListItem> {
+                                new SelectListItem{Text = "1", Value = "1", Selected = true},
+                                new SelectListItem{Text = "2", Value = "2"},
+                                new SelectListItem{Text = "3", Value = "3"},
+                                new SelectListItem{Text = "4", Value = "4"},
+                                new SelectListItem{Text = "5", Value = "5"},
+                            },
+                            new {
+                                @class = "btn btn-primary btn-sm",
+                                @style ="inline-block",
+                                @id = "quantitiesddl"}
+                        )
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Ajax.ActionLink(
+                    linkText: "Add to Cart",
+                    actionName: "AddToCart",
+                    controllerName: "Home",
+                    routeValues: new { productId = Model.Id, quantity = 1 },
+                    ajaxOptions: new AjaxOptions {
+                        UpdateTargetId= "cart-details",
+                        InsertionMode=InsertionMode.Replace
+                    },
+                    htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+                )
+            </div>
+        </div>
+    </dl>
+    <p>
+        @Html.ActionLink(
+            "Back", 
+            "Index", 
+            "Home", 
+            new { }, 
+            new { @class = "btn btn-primary btn-sm backButton", @style = "float:left" }
+        )
+    </p>
+</div>
+

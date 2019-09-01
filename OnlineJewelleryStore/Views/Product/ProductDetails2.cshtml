@@ -1,0 +1,71 @@
+﻿@model OnlineJewelleryStore.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "ProductDetails2";
+}
+
+<h2>ProductDetails2</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Model.Product.Name</h4>
+        @Html.DropDownListFor(Model => Model.SelectedQuantity, Model.Quantity, new { @id = "ddlQuantity" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+        <a name="add-to-cart" href="#">View Profile</a>
+        <div class="row">
+            <div class="col-md-12">
+                @Ajax.ActionLink(
+                    linkText: "Add to Cart",
+                    actionName: "AddToCart",
+                    controllerName: "Home",
+                    routeValues: new { productId = Model.Product.Id, quantity = Model.SelectedQuantity },
+                    ajaxOptions: new AjaxOptions {
+                        UpdateTargetId= "cart-details",
+                        InsertionMode=InsertionMode.Replace
+                    },
+                    htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+                )
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#ddlQuantity').on('change', function () {
+            alert($('#ddlQuantity').val());
+            @Model.SelectedQuantity = $('#ddlQuantity').val();
+            alert(@Request.Form["#ddlQuantity"]);
+        });
+    });
+
+    function discountPostback() {
+        debugger;
+
+
+            $.ajax({
+                url: '@Url.Action("Index","Report")',
+                type: 'POST',
+                data: { type: $('discount').val },
+                success: function () {
+
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+            return false;
+    }
+</script>

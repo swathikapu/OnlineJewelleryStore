@@ -2,22 +2,22 @@
 
 <td>
     <img class="img-responsive" title="click to view product detail"
-            style="cursor:pointer;height:80px;width:100px;"
-            src=@Url.Content(Model.Product.Image) />
+         style="cursor:pointer;height:80px;width:100px;"
+         src=@Url.Content(Model.Product.Image) />
 </td>
 <td class="text-primary" style="padding-top:40px">
     @Html.DisplayFor(modelItem => Model.Product.Name)
     @*@Ajax.ActionLink(
-        linkText: "Remove",
-        actionName: "RemovefromCart",
-        controllerName: "Cart",
-        routeValues: new { productId = Model.Product.Id},
-        ajaxOptions: new AjaxOptions {
-            UpdateTargetId= Model.Product.Id.ToString(),
-            InsertionMode=InsertionMode.Replace
-        },
-        htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
-    )*@
+            linkText: "Remove",
+            actionName: "RemovefromCart",
+            controllerName: "Cart",
+            routeValues: new { productId = Model.Product.Id},
+            ajaxOptions: new AjaxOptions {
+                UpdateTargetId= Model.Product.Id.ToString(),
+                InsertionMode=InsertionMode.Replace
+            },
+            htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+        )*@
     @Html.ActionLink(
         "Remove",
         "RemovefromCart",
@@ -25,11 +25,116 @@
         new { productId = Model.Product.Id },
         new { @class = "btn btn-primary btn-sm cartButton" }
     )
+    <a href="#" class="incrproduct" data-id="@Model.Product.Id">Add</a>
+    <a href="#" class="decrproduct" data-id="@Model.Product.Id">-</a>
+    <br />
+    <a href="#" class="removeproduct" data-id="@Model.Product.Id">Remove</a>
 </td>
-<td style="padding-top:40px">
+<td class="qty@(Model.Product.Id)" style="padding-top:40px">
     @Html.DisplayFor(modelItem => Model.Quantity)
 </td>
-<td class="text-danger" style="padding-top:40px">
+<td class="text-danger total@(Model.Product.Id)" style="padding-top:40px">
     @Html.DisplayFor(modelItem => Model.TotalPrice)
 </td>
 
+<script>
+    $(
+        function () {
+            $('a.incrproduct').click(
+                function (e) {
+                    e.preventDefault();
+                    var productId = $(this).data("id");
+                    var url = "/Home/IncrementProduct";
+                    $.getJSON(url, { productId: productId }, function (data) {
+                        $("td.qty" + productId).html(data.qty);
+                    }).done();
+            });
+        }
+    );
+</script>
+
+
+@*@section Scripts{
+    <script>
+        // Increment Product
+        $(function () {
+            $("a.incrproduct").click(function (e) {
+                e.preventDefault();
+                var productId = $(this).data("id");
+                var url = "/cart/IncrementProduct";
+                $.getJSON(url, { productId: productId }, function (data) {
+                    $("td.qty" + productId).html(data.qty);
+                    var price = data.qty * data.price;
+                    var priceHtml = "£" + price.toFixed(2);
+                    $("td.total" + productId).html(priceHtml);
+                    var gt = parseFloat($("td.grandtotal span").text());
+                    var grandtotal = (gt + data.price).toFixed(2);
+                    $("td.grandtotal span").text(grandtotal);
+                }).done(function (data) {
+                    var url2 = "/cart/PaypalPartial";
+                    $.get(url2, {}, function (data) {
+                        $('div.paypaldiv').html(data);
+                    });
+                });
+            });
+            /////////////////////////////////////////////////////////
+            // Decrement Product
+
+            $("a.decrproduct").click(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var productId = $(this).data("id");
+                var url = "/cart/DecrementProduct";
+                $.getJSON(url, { productId: productId }, function (data) {
+                    if (data.qty == 0) {
+                        $this.parent().parent().fadeOut("fast", function () {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        $("td.qty" + productId).html(data.qty);
+                        var price = data.qty * data.price;
+                        var priceHtml = "£" + price.toFixed(2);
+                        $("td.total" + productId).html(priceHtml);
+                        var gt = parseFloat($("td.grandtotal span").text());
+                        var grandtotal = (gt - data.price).toFixed(2);
+                        $("td.grandtotal span").text(grandtotal);
+                    }
+                }).done(function (data) {
+                    var url2 = "/cart/PaypalPartial";
+                    $.get(url2, {}, function (data) {
+                        $('div.paypaldiv').html(data);
+                    });
+                });
+            });
+            /////////////////////////////////////////////////////////
+            // remove product
+
+            $("a.removeproduct").click(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var productId = $(this).data("id");
+                var url = "/cart/RemoveProduct";
+                $.get(url, { productId: productId }, function (data) {
+                    location.reload();
+
+                });
+            });
+            // Place Order
+            $("a.placeorder").click(function (e) {
+                e.preventDefault();
+                var $this = $(this);
+
+                var url = "/cart/PlaceOrder";
+                $(".ajaxbg").show();
+                $.post(url, {}, function (data) {
+                    $(".ajaxbg span").text("Thankyou you will now be redirected to paypal to complete your order.");
+                    setTimeout(function () {
+                        $('form input[name ="submit"]').click();
+                    }, 2000);
+                });
+            });
+
+        });
+    </script>
+}*@

@@ -21,7 +21,6 @@ namespace OnlineJewelleryStore.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter Product Description")]
-        [RegularExpression(@"^[a-zA-Z][a-zA-Z\s]*$", ErrorMessage = "Please enter alphabets only")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Please enter the Quantity")]

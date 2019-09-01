@@ -35,9 +35,44 @@
 
             @foreach (var item in Model.Items)
             {
-                <tr id="@item.Product.Id" style="font-weight: bold">
-                    @Html.Action("_Checkoutpartial", new { productId = item.Product.Id })
-                </tr>
+            <tr id="@item.Product.Id" style="font-weight: bold">
+                <td>
+                    <img class="img-responsive" title="click to view product detail"
+                         style="cursor:pointer;height:80px;width:100px;"
+                         src=@Url.Content(item.Product.Image) />
+                </td>
+                <td class="text-primary" style="padding-top:40px">
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                    @*@Ajax.ActionLink(
+                        linkText: "Remove",
+                        actionName: "RemovefromCart",
+                        controllerName: "Cart",
+                        routeValues: new { productId = Model.Product.Id},
+                        ajaxOptions: new AjaxOptions {
+                            UpdateTargetId= Model.Product.Id.ToString(),
+                            InsertionMode=InsertionMode.Replace
+                        },
+                        htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+                    )*@
+                    @Html.ActionLink(
+                        "Remove",
+                        "RemovefromCart",
+                        "Cart",
+                        new { productId = item.Product.Id },
+                        new { @class = "btn btn-primary btn-sm cartButton" }
+                    )
+                    <a href="#" class="incrproduct" data-id="@item.Product.Id">Add</a>
+                    <a href="#" class="decrproduct" data-id="@item.Product.Id">-</a>
+                    <br />
+                    <a href="#" class="removeproduct" data-id="@item.Product.Id">Remove</a>
+                </td>
+                <td class="qty@(item.Product.Id)" style="padding-top:40px">
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td class="text-danger total@(item.Product.Id)" style="padding-top:40px">
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+            </tr>
             }
         </table>
     }
@@ -66,3 +101,21 @@
         }
     )
 </div>
+
+<script>
+    $(
+        function () {
+            $('a.incrproduct').click(
+                function (e) {
+                    e.preventDefault();
+                    var productId = $(this).data("id");
+                    var url = "/Home/IncrementProduct";
+                    $.getJSON(url, { productId: productId }, function (data) {
+                        $("td.qty" + productId).html(data.qty);
+                        var priceHtml = "£" + data.price.toFixed(2);
+                        $("td.total" + productId).html(priceHtml);
+                    }).done();
+            });
+        }
+    );
+</script>
