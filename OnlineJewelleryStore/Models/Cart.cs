@@ -49,7 +49,13 @@ namespace OnlineJewelleryStore.Models
 
         public void RemoveItem(CartItem item)
         {
-            _Items.Remove(item);
+            int _index = getExistingItemIndex(item);
+            if (_index != -1)
+            {
+                _Items[_index].Quantity -= 1;
+                if (_Items[_index].Quantity == 0)
+                    _Items.Remove(item);
+            }
         }
 
         public void RemoveItem(int productId)

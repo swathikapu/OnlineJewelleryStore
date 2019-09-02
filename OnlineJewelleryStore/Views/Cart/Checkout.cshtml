@@ -61,10 +61,8 @@
                         new { productId = item.Product.Id },
                         new { @class = "btn btn-primary btn-sm cartButton" }
                     )
-                    <a href="#" class="incrproduct" data-id="@item.Product.Id">Add</a>
+                    <a href="#" class="incrproduct" data-id="@item.Product.Id">+</a>
                     <a href="#" class="decrproduct" data-id="@item.Product.Id">-</a>
-                    <br />
-                    <a href="#" class="removeproduct" data-id="@item.Product.Id">Remove</a>
                 </td>
                 <td class="qty@(item.Product.Id)" style="padding-top:40px">
                     @Html.DisplayFor(modelItem => item.Quantity)
@@ -116,6 +114,24 @@
                         $("td.total" + productId).html(priceHtml);
                     }).done();
             });
+        }
+    );
+    $(
+        function () {
+            $('a.decrproduct').click(
+                function (e) {
+                    e.preventDefault();
+                    var productId = $(this).data("id");
+                    var url = "/Home/DecrementProduct";
+                    $.getJSON(url, { productId: productId }, function (data) {
+                        if (data.qty == 0) {
+                            location.reload();
+                        }
+                        $("td.qty" + productId).html(data.qty);
+                        var priceHtml = "£" + data.price.toFixed(2);
+                        $("td.total" + productId).html(priceHtml);
+                    }).done();
+                });
         }
     );
 </script>

@@ -35,6 +35,15 @@ namespace OnlineJewelleryStore.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult DecrementProduct(int productId)
+        {
+            Cart cart = mainRepo.GetCartFromSession(Session);
+            CartItem item = cart.GetItem(productId);
+            cart.RemoveItem(item);
+            var result = new { qty = item.Quantity, price = item.TotalPrice };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult _Cartpartial()
         {
             Cart cart = mainRepo.GetCartFromSession(Session);
