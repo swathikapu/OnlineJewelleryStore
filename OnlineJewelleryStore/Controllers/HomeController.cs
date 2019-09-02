@@ -31,7 +31,12 @@ namespace OnlineJewelleryStore.Controllers
             Cart cart = mainRepo.GetCartFromSession(Session);
             CartItem item = cart.GetItem(productId);
             cart.AddItem(item);
-            var result = new { qty = item.Quantity, price = item.TotalPrice };
+            var result = new {
+                qty = item.Quantity,
+                price = item.TotalPrice,
+                numItems = cart.NumberOfItems,
+                totalPrice = cart.TotalPrice
+            };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -40,7 +45,12 @@ namespace OnlineJewelleryStore.Controllers
             Cart cart = mainRepo.GetCartFromSession(Session);
             CartItem item = cart.GetItem(productId);
             cart.RemoveItem(item);
-            var result = new { qty = item.Quantity, price = item.TotalPrice };
+            var result = new {
+                qty = item.Quantity,
+                price = item.TotalPrice,
+                numItems = cart.NumberOfItems,
+                totalPrice = cart.TotalPrice
+            };
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

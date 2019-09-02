@@ -340,7 +340,7 @@ my-navbar {
 }
 
 .buyButton {
-    background: #b2473e url('Images/buy_icon_white.png') no-repeat;
+    background: #3a5199 url('Images/buy_icon_white.png') no-repeat;
     color: #fff;
     padding-left: 31px;
     background-size: 18px;
@@ -465,6 +465,37 @@ input#likeButton {
     /*background-position-y: 2px;*/
     background-position-x: 6px;
 }
+
+.removeCartButton {
+    background: #CD5C5C url('Images/remove_cart_white.png') no-repeat;
+    background-size: 20px;
+    background-position-y: 4px;
+    background-position-x: 6px;
+    height: 30px;
+    width: 30px;
+}
+
+.plusButton {
+    background: #20B2AA url('Images/plus_white.png') no-repeat;
+    color: #fff;
+    background-size: 25px;
+    background-position-y: 2px;
+    background-position-x: 2px;
+    height: 30px;
+    width: 30px;
+}
+
+
+.minusButton {
+    background: #DC143C url('Images/minus_white.png') no-repeat;
+    color: #fff;
+    background-size: 16px;
+    background-position-y: 7px;
+    background-position-x: 6px;
+    height: 30px;
+    width: 30px;
+}
+
 
 .deleteButton {
     background: #b2473e url('Images/delete_white.png') no-repeat;
