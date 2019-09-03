@@ -5,7 +5,7 @@
         @*<img class="img-responsive" title="click to view product detail"
         style="cursor:pointer;height:160px;width:100%;"
         src=@Url.Content(Model.Image) />*@
-        <a href=@Url.Action("ProductDetails2", "Product", new {id = Model.Id})>
+        <a href=@Url.Action("ProductDetails", "Product", new {id = Model.Id})>
             <img 
                  src=@Url.Content(Model.Image) 
                  class="img-responsive" 

@@ -297,7 +297,6 @@
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Cart\_Checkoutpartial.cshtml" />
     <Content Include="Views\Order\Buy.cshtml" />
     <Content Include="Views\Account\MyOrders.cshtml" />
     <Content Include="Views\ProductDashboard\Create.cshtml" />
