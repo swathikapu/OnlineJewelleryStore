@@ -35,9 +35,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="float:right; margin-right:10px;">
-                    <p style="display:inline-block;">Price:</p>
+                    <h5 style="display:inline-block;" class="text-primary">Price:</h5>
                     <h4 class="text-danger" style="display:inline-block;font-weight:bold;">@Html.DisplayFor(modelItem => Model.Price)</h4>
-                    <p style="display:inline-block;">&nbsp;&nbsp;&nbsp;Qty: </p>
+                    <h5 style="display:inline-block;" class="text-primary">&nbsp;&nbsp;&nbsp;Qty: </h5>
                     <div style="display:inline-block;">
                         @Html.DropDownList("Quantities", new List<SelectListItem> {
                                 new SelectListItem{Text = "1", Value = "1", Selected = true},
