@@ -1,6 +1,6 @@
 ﻿@model OnlineJewelleryStore.Models.Tbl_Product
 
-<div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
+<div class="col-md-3 col-sm-4 col-xs-9" style="margin-bottom:8px;">
     <div class="thumbnail product-item" style="height:300px">
         <a href=@Url.Action("ProductDetails", "Product", new {id = Model.Id})>
             <img 
@@ -17,15 +17,15 @@
         </div>
         <div>
             @Ajax.ActionLink(
-         linkText: "Add to Cart",
-         actionName: "AddToCart",
-         controllerName: "Home",
-         routeValues: new { productId = Model.Id, quantity = 1 },
-         ajaxOptions: new AjaxOptions {
-             UpdateTargetId = "cart-details",
-             InsertionMode = InsertionMode.Replace
-         },
-         htmlAttributes: new { @class = "btn btn-primary btn-sm cartButton", @style = "float:right;margin-left:3px" }
+                 linkText: "Add to Cart",
+                 actionName: "AddToCart",
+                 controllerName: "Home",
+                 routeValues: new { productId = Model.Id, quantity = 1 },
+                 ajaxOptions: new AjaxOptions {
+                     UpdateTargetId = "cart-details",
+                     InsertionMode = InsertionMode.Replace
+                 },
+                htmlAttributes: new { @class = "btn btn-primary btn-sm cartButton", @style = "float:right;margin-left:3px" }
             )
             @Html.ActionLink(
                 "Details",
