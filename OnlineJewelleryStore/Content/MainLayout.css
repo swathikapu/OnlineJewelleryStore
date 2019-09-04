@@ -340,7 +340,7 @@ my-navbar {
 }
 
 .buyButton {
-    background: #3a5199 url('Images/buy_icon_white.png') no-repeat;
+    background: mediumaquamarine url('Images/buy_icon_white.png') no-repeat;
     color: #fff;
     padding-left: 31px;
     background-size: 18px;

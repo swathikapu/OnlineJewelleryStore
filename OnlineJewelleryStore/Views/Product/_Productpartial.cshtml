@@ -2,9 +2,6 @@
 
 <div class="col-md-3 col-sm-3 col-xs-6" style="margin-bottom:8px">
     <div class="thumbnail product-item" style="height:300px">
-        @*<img class="img-responsive" title="click to view product detail"
-        style="cursor:pointer;height:160px;width:100%;"
-        src=@Url.Content(Model.Image) />*@
         <a href=@Url.Action("ProductDetails", "Product", new {id = Model.Id})>
             <img 
                  src=@Url.Content(Model.Image) 
@@ -17,33 +14,26 @@
             <h5 class="text-primary">@Model.Name</h5>
             <p class="text-danger" style="font-weight:bold">@Html.DisplayFor(modelItem => Model.Price)</p>
             <div class="product-item-badge">New</div>
-            @*<div style="float:right">
-                <p style="display:inline-block">Quantity</p>
-                <div style="display:inline-block">
-                    @Html.DropDownList("Quantities", new List<SelectListItem> {
-                            new SelectListItem{Text = "1", Value = "1", Selected = true},
-                            new SelectListItem{Text = "2", Value = "2"},
-                            new SelectListItem{Text = "3", Value = "3"},
-                            new SelectListItem{Text = "4", Value = "4"},
-                            new SelectListItem{Text = "5", Value = "5"},
-                        },
-                        new { @class = "btn btn-primary btn-sm", @style="inline-block" }
-                    )
-                </div>
-            </div>*@
         </div>
         <div>
             @Ajax.ActionLink(
-                linkText: "Add to Cart",
-                actionName: "AddToCart",
-                controllerName: "Home",
-                routeValues: new { productId = Model.Id, quantity=1},
-                ajaxOptions: new AjaxOptions {
-                    UpdateTargetId= "cart-details",
-                    InsertionMode=InsertionMode.Replace
-                },
-                htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
+         linkText: "Add to Cart",
+         actionName: "AddToCart",
+         controllerName: "Home",
+         routeValues: new { productId = Model.Id, quantity = 1 },
+         ajaxOptions: new AjaxOptions {
+             UpdateTargetId = "cart-details",
+             InsertionMode = InsertionMode.Replace
+         },
+         htmlAttributes: new { @class = "btn btn-primary btn-sm cartButton", @style = "float:right;margin-left:3px" }
             )
+            @Html.ActionLink(
+                "Details",
+                "ProductDetails",
+                "Product",
+                new { id = Model.Id },
+                new { @class = "btn btn-primary btn-sm detailsButton", @style = "float:right" }
+           )
         </div>
     </div>
 </div>
