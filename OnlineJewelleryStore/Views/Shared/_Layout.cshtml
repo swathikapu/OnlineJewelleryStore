@@ -112,7 +112,7 @@
                     }
                     @if (ViewBag.Title != "Checkout" && ViewBag.Title != "Buy")
                     {
-                        <li style="padding-top:10px">
+                        <li style="padding-top:10px" id="layout-cart-li">
                             @Html.Action(
                                 "_Cartpartial",
                                 "Home"
@@ -121,7 +121,6 @@
                     }
                 </ul>
             </div>
-
         </div>
     </nav>
     @RenderBody()

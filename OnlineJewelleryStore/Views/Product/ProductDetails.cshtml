@@ -35,16 +35,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="float:right; margin-right:10px;">
-                    <p style="display:inline-block;">Price:&nbsp;&nbsp;&nbsp;</p>
+                    <p style="display:inline-block;">Price:</p>
                     <h4 class="text-danger" style="display:inline-block;font-weight:bold;">@Html.DisplayFor(modelItem => Model.Price)</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div style="float:right; margin-right:10px;">
-                    <p style="display:inline-block;">Quantity: </p>
+                    <p style="display:inline-block;">&nbsp;&nbsp;&nbsp;Qty: </p>
                     <div style="display:inline-block;">
                         @Html.DropDownList("Quantities", new List<SelectListItem> {
                                 new SelectListItem{Text = "1", Value = "1", Selected = true},
@@ -60,12 +53,11 @@
                         )
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                @Ajax.ActionLink(
+                @*@Ajax.ActionLink(
                     linkText: "Add to Cart",
                     actionName: "AddToCart",
                     controllerName: "Home",
@@ -75,7 +67,8 @@
                         InsertionMode=InsertionMode.Replace
                     },
                     htmlAttributes: new {@class="btn btn-primary btn-sm cartButton"}
-                )
+                )*@
+                <a href="#" class="btn btn-primary btn-sm cartButton addQuantity" data-id="@Model.Id"> Add to Cart </a>
             </div>
         </div>
     </dl>
@@ -90,3 +83,20 @@
     </p>
 </div>
 
+<script>
+    $(
+        function () {
+            $('a.addQuantity').click(
+                function (e) {
+                    e.preventDefault();
+                    var productId = $(this).data("id");
+                    var quantity = parseInt($('#quantitiesddl').val());
+                    var url = "/Home/AddToCartJson";
+                    $.getJSON(url, { productId: productId, quantity: quantity }, function (data) {
+                        var url = '@Url.Action("_Cartpartial", "Home")'
+                        $('#layout-cart-li').load(url);
+                    }).done();
+            });
+        }
+    );
+</script>

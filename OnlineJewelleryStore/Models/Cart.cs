@@ -44,6 +44,13 @@ namespace OnlineJewelleryStore.Models
             if (_index == -1)
                 _Items.Add(item);
             else
+                _Items[_index].Quantity += item.Quantity;
+        }
+
+        public void IncrementItem(CartItem item)
+        {
+            int _index = getExistingItemIndex(item);
+            if (_index != -1)
                 _Items[_index].Quantity += 1;
         }
 

@@ -26,11 +26,25 @@ namespace OnlineJewelleryStore.Controllers
             return PartialView("_Cartpartial", cart);
         }
 
+        public ActionResult AddToCartJson(int productId, int quantity)
+        {
+            Tbl_Product product = mainRepo.GetProductById(productId);
+            CartItem item = new CartItem() { Product = product, Quantity = quantity };
+            Cart cart = mainRepo.GetCartFromSession(Session);
+            cart.AddItem(item);
+            Session["cart"] = cart;    // update cart with new details.
+            var result = new
+            {
+                numItems = cart.NumberOfItems,
+                totalPrice = cart.TotalPrice
+            };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult IncrementProduct(int productId)
         {
             Cart cart = mainRepo.GetCartFromSession(Session);
             CartItem item = cart.GetItem(productId);
-            cart.AddItem(item);
+            cart.IncrementItem(item);
             var result = new {
                 qty = item.Quantity,
                 price = item.TotalPrice,
