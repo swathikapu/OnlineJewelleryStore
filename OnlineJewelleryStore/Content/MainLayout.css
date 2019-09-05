@@ -373,18 +373,6 @@ my-navbar {
     margin-right: 9px;
 }
 
-.signUpButton {
-    background: #f18681 url('Images/add_cart_icon_white.png') no-repeat;
-    color: #fff;
-    padding-left: 26px;
-    background-size: 18px;
-    background-position-y: 4px;
-    background-position-x: 6px;
-    position: relative;
-    float: right;
-    margin-right: 9px;
-}
-
 .checkoutButton {
     background: #a5c05b url('Images/cart_icon_white.png') no-repeat;
     color: #fff;
@@ -508,6 +496,24 @@ input#likeButton {
 
 .createButton {
     background: #a5c05b url('Images/create_white_icon.png') no-repeat;
+    color: #fff;
+    padding-left: 27px;
+    background-size: 20px;
+    background-position-y: 4px;
+    background-position-x: 6px;
+}
+
+.loginButton {
+    background: #3b5998 url('Images/login_white_icon.png') no-repeat;
+    color: #fff;
+    padding-left: 27px;
+    background-size: 18px;
+    background-position-y: 5px;
+    background-position-x: 6px;
+}
+
+.signUpButton {
+    background: #dd4b39 url('Images/signup_white_icon.png') no-repeat;
     color: #fff;
     padding-left: 27px;
     background-size: 20px;

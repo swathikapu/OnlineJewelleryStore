@@ -30,7 +30,7 @@
         <div class="container">
             <div class="navbar-header">
                 @Html.ActionLink(
-                    "Jewellery Store",
+                    "Sandy's Jewellery Store",
                     "Index",
                     "Home",
                     new {},
@@ -46,30 +46,44 @@
                 <ul class="nav navbar-nav navbar-right">
                     @if (Session["username"] == null)
                     {
-                        <li>
-                            @Html.ActionLink(
-                                "Sign Up",
-                                "SignUp",
-                                "Account"
-                            )
-                        </li>
-                        <li>
-                            @Html.ActionLink(
-                                 "Login",
-                                 "Login",
-                                 "Account"
-                             )
-                        </li>
+                        if (ViewBag.Title != "SignUp")
+                        {
+                            <li style="padding-top:10px; padding-left:2px">
+                                <div>
+                                    @Html.ActionLink(
+                                        "Sign Up",
+                                        "SignUp",
+                                        "Account",
+                                        new { },
+                                        new { @class = "btn btn-primary btn-sm signUpButton" }
+                                    )
+                                </div>
+                            </li>
+                        }
+                        if (ViewBag.Title != "Login")
+                        {
+                            <li style="padding-top:10px; padding-left:2px">
+                                <div>
+                                    @Html.ActionLink(
+                                         "Login",
+                                         "Login",
+                                         "Account",
+                                         new { },
+                                         new { @class="btn btn-primary btn-sm loginButton" }
+                                     )
+                                </div>
+                            </li>
+                        }
                     }
                     else
                     {
                         List<SelectListItem> dropDownItems = new List<SelectListItem> {
-                                        new SelectListItem {
-                                            Text = "Welcome " + Session["username"].ToString().ToUpper(),
-                                            Value = Url.Action("Index", "Home"),
-                                            Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Home")
-                                        }
-                                    };
+                                                                new SelectListItem {
+                                                                    Text = "Welcome " + Session["username"].ToString().ToUpper(),
+                                                                    Value = Url.Action("Index", "Home"),
+                                                                    Selected = ViewContext.RouteData.Values["action"].ToString().Equals("Index") && ViewContext.RouteData.Values["controller"].ToString().Equals("Home")
+                                                                }
+                                                            };
                         if ((int)Session["roleId"] == 1)
                         {
                             dropDownItems.Add(new SelectListItem
@@ -134,8 +148,12 @@
 <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 <script>
     $(function () {
+
+
+
         $('#urlddl').change(function () {
             //var urlddl_text = $("#urlddl option:selected").text();
+
             //$("#hidden1").val(urlddl_text);
             var url = $(this).val();
             if (url != null && url != '') {

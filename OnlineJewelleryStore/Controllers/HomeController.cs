@@ -57,6 +57,7 @@ namespace OnlineJewelleryStore.Controllers
         public JsonResult DecrementProduct(int productId)
         {
             Cart cart = mainRepo.GetCartFromSession(Session);
+
             CartItem item = cart.GetItem(productId);
             cart.RemoveItem(item);
             var result = new {
