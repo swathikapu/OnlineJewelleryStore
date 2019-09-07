@@ -36,6 +36,15 @@
     <div class="form-group">
         <div class="col-md-12">
             <input type="submit" value="Login" class="btn btn-primary btn-sm loginButton" />
+            @Html.ActionLink(
+              "Back",
+              "Index",
+              "Home",
+              new { },
+              new {
+              @class = "btn btn-primary btn-sm backButton"
+              }
+           )
         </div>
     </div>
     <div id="createAccount">
@@ -44,6 +53,8 @@
              "SignUp",
              "Account"
         )
+       
+
     </div>
 </div>
 }
