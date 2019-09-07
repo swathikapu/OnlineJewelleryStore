@@ -11,8 +11,9 @@ namespace OnlineJewelleryStore.Controllers
     public class HomeController : Controller
     {
         MainRepository mainRepo = new MainRepository();
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
+            mainRepo.search = search;
             return View(mainRepo);
         }
 

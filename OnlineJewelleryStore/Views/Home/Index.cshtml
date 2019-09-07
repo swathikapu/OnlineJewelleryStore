@@ -45,20 +45,24 @@
         <div class="olContent f1">
             <h2 style="color:black">Search Product/ Category</h2>
         </div>
-        <div class="olSearch fr">
-            <input type="text" placeholder="Enter Keyword" name="searchKey" class="inputComn houseText form-control" />
-            <div class="searchIcon">
-                <button type="button" class="searchBtn">
-                    <img src="~/Content/Images/searchIcon.png" style="width:10%" />
-                </button>
+        <form method="post">
+            <div class="olSearch fr">
+                <input type="text" placeholder="Enter Keyword" name="search" class="inputComn houseText form-control" />
+                <div class="searchIcon" style="width:50px">
+                    <button type="submit" class="searchBtn" style="padding:0px;">
+                        <img src="~/Content/Images/searchIcon.png" style="width:80%" />
+                    </button>
+                </div>
             </div>
-        </div>
+
+        </form>
+
         @foreach (var category in Model.GetAllCategories())
         {
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header bg-primary text-center text-capitalize text-justify">
-                        <h2 class=" category-heading">@category.Name <small style="color:white">Latest</small></h2>
+                        <h2 class=" category-heading">@category.Name</h2>
                     </div>
                 </div>
             </div>

@@ -31,5 +31,6 @@ namespace OnlineJewelleryStore.Models
         public virtual DbSet<Tbl_OrderDetails> Tbl_OrderDetails { get; set; }
         public virtual DbSet<Tbl_Role> Tbl_Role { get; set; }
         public virtual DbSet<Tbl_Product> Tbl_Product { get; set; }
+        public object SqlQuery { get; internal set; }
     }
 }

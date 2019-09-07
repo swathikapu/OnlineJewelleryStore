@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using OnlineJewelleryStore.Models;
@@ -9,20 +10,37 @@ namespace OnlineJewelleryStore.Repository
     public class MainRepository
     {
         public JewelleryDBEntities db = new JewelleryDBEntities();
+        public string search { get; set; }
+        public SqlParameter[] _getSearchParam()
+        {
+            return new SqlParameter[]
+            {
+                new SqlParameter("@search", search??(object)DBNull.Value)
+            };
+        }
+
         public List<Tbl_Category> GetAllCategories()
         {
-            return db.Tbl_Category.ToList();
+            List<Tbl_Category> categories = db.Tbl_Category.ToList();
+            List<Tbl_Category> matchedCategories = new List<Tbl_Category>();
+            foreach(var category in categories)
+            {
+                List<Tbl_Product> featuredProducts = GetFeaturedProductsByCategoryId(category.Id);
+                if (featuredProducts.Count() > 0)
+                    matchedCategories.Add(category);
+            }
+            return matchedCategories;
         }
 
         public List<Tbl_Product> GetProductsByCategoryId(int categoryId)
         {
             return db.Tbl_Product.Where(p => p.CategoryId == categoryId).ToList();
-
         }
 
         public List<Tbl_Product> GetFeaturedProductsByCategoryId(int categoryId)
         {
-            return db.Tbl_Product.Where(p => p.CategoryId == categoryId && p.IsFeatured == true).ToList();
+            SqlParameter[] param = _getSearchParam();
+            return db.Database.SqlQuery<Tbl_Product>("GetSearchBy @search", param).Where(p => p.CategoryId == categoryId && p.IsFeatured == true).ToList();
         }
 
         public Tbl_Product GetProductById(int productId)
