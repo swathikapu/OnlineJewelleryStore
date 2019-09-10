@@ -4,75 +4,77 @@
     ViewBag.Title = "Index";
 }
 
-<div class="container" style="padding:30px;">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header bg-primary text-center text-capitalize">
-                <h2 class=" category-heading">Member Admin Dashboard</h2>
+<div class="container" id="container" style="padding:30px;">
+    <div id="main">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header bg-primary text-center text-capitalize">
+                    <h2 class=" category-heading">Member Admin Dashboard</h2>
+                </div>
             </div>
         </div>
-    </div>
-    <p>
-        @Html.ActionLink("Create New Member",
-            "Create",
-            new { },
-            new { @class = "btn btn-primary btn-sm createButton"}
-        )
-    </p>
-    <table class="table table-hover table-striped" id="franchiseTable">
-        <thead style="background-color:#A7BACE;">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.LastName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Password)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Tbl_Role.Role)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tbl_Role.Role)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm editButton" }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm detailsButton" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-sm deleteButton" })
-                </td>
-            </tr>
-        }
+        <p>
+            @Html.ActionLink("Create New Member",
+                "Create",
+                new { },
+                new { @class = "btn btn-primary btn-sm createButton"}
+            )
+        </p>
+        <table class="table table-hover table-striped" id="franchiseTable">
+            <thead style="background-color:#A7BACE;">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Password)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tbl_Role.Role)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tbl_Role.Role)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm editButton" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-primary btn-sm detailsButton" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-primary btn-sm deleteButton" })
+                    </td>
+                </tr>
+            }
 
-    </table>
+        </table>
+    </div>
 </div>
 <script>
     $(function () {

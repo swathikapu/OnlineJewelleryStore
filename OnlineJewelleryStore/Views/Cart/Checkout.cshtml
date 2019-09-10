@@ -4,7 +4,7 @@
     ViewBag.Title = "Checkout";
 }
 
-<div class="form-control-static" style="padding:30px;">
+<div class="form-control-static" id="container" style="padding:30px;">
     <div class="row">
         <div class="col-md-12">
             <div class="page-header bg-primary text-center text-capitalize">
@@ -16,7 +16,7 @@
     {
         <table class="table">
             <thead class="alert-info" style="background-color:#A7BACE;">
-                <tr class="">
+                <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Items[0].Product.Image)
                     </th>
@@ -41,8 +41,8 @@
                 <tr id="@item.Product.Id" style="font-weight: bold">
                     <td>
                         <img class="img-responsive" title="click to view product detail"
-                             style="cursor:pointer;width:80px;height:80px;border:solid;border-radius:2px"
-                             src=@Url.Content(item.Product.Image) />
+                                style="cursor:pointer;width:80px;height:80px;border:solid;border-radius:2px"
+                                src=@Url.Content(item.Product.Image) />
                     </td>
                     <td class="text-primary" style="padding-top:40px">
                         @Html.DisplayFor(modelItem => item.Product.Name)
@@ -85,20 +85,20 @@
     {
         <h2 class="text-primary" style="text-align:center;margin-top:30px;">Your Cart is Empty</h2>
     }
-        <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:2px;">
-                @Html.ActionLink(
-                    "Continue Shopping",
-                    "Index",
-                    "Home",
-                    new {},
-                    new {
-                        @class = "btn btn-primary btn-sm continueButton",
-                        @style = "float:right;"
-                    }
-                )
-            </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top:2px;">
+            @Html.ActionLink(
+                "Continue Shopping",
+                "Index",
+                "Home",
+                new {},
+                new {
+                    @class = "btn btn-primary btn-sm continueButton",
+                    @style = "float:right;"
+                }
+            )
         </div>
+    </div>
 </div>
 
 <script>

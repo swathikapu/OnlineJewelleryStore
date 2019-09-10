@@ -2,6 +2,10 @@
 @import url('font-awesome.css');
 @import url('https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap');
 
+html{
+    height: 100%;
+}
+
 body {
     margin: 0;
     font-family: 'Zilla Slab', serif;
@@ -11,6 +15,7 @@ body {
     background: #fff;
     overflow-x: hidden;
     scrollbar-face-color: #121212;
+    height: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -634,4 +639,22 @@ ul ul, ol ul {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
+
+#container{
+    min-height: 100%;
+}
+
+#main{
+    overflow:auto;
+    padding-bottom:50px;
+    overflow-x: hidden;
+}
+
+#footer{
+    position:relative;
+    height:50px;
+    margin-top: -50px;
+    text-align: center;
+    padding-top:15px;
 }

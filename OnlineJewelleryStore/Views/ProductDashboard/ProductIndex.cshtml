@@ -3,87 +3,89 @@
 @{
     ViewBag.Title = "ProductIndex";
 }
-<div class="container" style="padding-top:30px;">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header bg-primary text-center text-capitalize">
-                <h2 class=" category-heading">Product Admin Dashboard</h2>
-            </div>
-        </div>
-    </div>
-    @{List<SelectListItem> dropDownItems = new List<SelectListItem>(); }
-    @foreach (var category in Model.GetAllCategories())
-    {
-        dropDownItems.Add(
-            new SelectListItem
-            {
-                Text = category.Name,
-                Value = Url.Action(
-                    "ProductIndex",
-                    "ProductDashboard",
-                    new { selectedId = category.Id }
-                ),
-                Selected = category.Id == ViewBag.SelectedId
-            }
-        );
-    }
-    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Category: </h4>
-    @Html.DropDownList(
-        "CategoryId",
-        dropDownItems,
-        htmlAttributes: new {
-            @class = "btn btn-primary btn-sm ca",
-            @id = "categoryddl"
-        }
-    )
-    @{
-        string categoryName = Model.GetCategory(ViewBag.SelectedId).Name;
-        categoryName = categoryName.Remove(categoryName.Length - 1);
-    }
-    @Html.ActionLink(
-        "Create New " + categoryName,
-        "Create",
-        new { selectedId = ViewBag.SelectedId},
-        new {
-            @class = "btn btn-primary btn-sm createButton",
-        }
-    )
-    <br />
-    <br />
-    <div class="row product-container">
-        @foreach (var product in Model.GetProductsByCategoryId(ViewBag.SelectedId))
-        {
-            <div class="col-md-3 col-sm-4 col-xs-10" style="margin-bottom:8px">
-                <div class="thumbnail product-item" style="height:300px">
-                    <img class="img-responsive" title="click to view product detail"
-                         style="cursor:pointer;height:160px;width:100%;"
-                         src=@Url.Content(product.Image) />
-                    <div class="caption">
-                        <h5 class="text-primary">@product.Name</h5>
-                        <p class="text-danger" style="font-weight:bold">£@product.Price</p>
-                        <div class="product-item-badge">New</div>
-                    </div>
-                    @Html.ActionLink(
-                        "Edit",
-                        "Edit",
-                        new { id = product.Id },
-                        new { @class = "btn btn-primary btn-sm editButton" }
-                    )
-                    @Html.ActionLink(
-                        "Details",
-                        "Details",
-                        new { id = product.Id },
-                        new { @class = "btn btn-primary btn-sm detailsButton" }
-                    )
-                    @Html.ActionLink(
-                        "Delete",
-                        "Delete",
-                        new { id = product.Id },
-                        new { @class = "btn btn-primary btn-sm deleteButton" }
-                    )
+<div class="container" id="container" style="padding-top:30px;">
+    <div id="main">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header bg-primary text-center text-capitalize">
+                    <h2 class=" category-heading">Product Admin Dashboard</h2>
                 </div>
             </div>
+        </div>
+        @{List<SelectListItem> dropDownItems = new List<SelectListItem>(); }
+        @foreach (var category in Model.GetAllCategories())
+        {
+            dropDownItems.Add(
+                new SelectListItem
+                {
+                    Text = category.Name,
+                    Value = Url.Action(
+                        "ProductIndex",
+                        "ProductDashboard",
+                        new { selectedId = category.Id }
+                    ),
+                    Selected = category.Id == ViewBag.SelectedId
+                }
+            );
         }
+        <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Category: </h4>
+        @Html.DropDownList(
+            "CategoryId",
+            dropDownItems,
+            htmlAttributes: new {
+                @class = "btn btn-primary btn-sm ca",
+                @id = "categoryddl"
+            }
+        )
+        @{
+            string categoryName = Model.GetCategory(ViewBag.SelectedId).Name;
+            categoryName = categoryName.Remove(categoryName.Length - 1);
+        }
+        @Html.ActionLink(
+            "Create New " + categoryName,
+            "Create",
+            new { selectedId = ViewBag.SelectedId},
+            new {
+                @class = "btn btn-primary btn-sm createButton",
+            }
+        )
+        <br />
+        <br />
+        <div class="row product-container">
+            @foreach (var product in Model.GetProductsByCategoryId(ViewBag.SelectedId))
+            {
+                <div class="col-md-3 col-sm-4 col-xs-10" style="margin-bottom:8px">
+                    <div class="thumbnail product-item" style="height:300px">
+                        <img class="img-responsive" title="click to view product detail"
+                             style="cursor:pointer;height:160px;width:100%;"
+                             src=@Url.Content(product.Image) />
+                        <div class="caption">
+                            <h5 class="text-primary">@product.Name</h5>
+                            <p class="text-danger" style="font-weight:bold">£@product.Price</p>
+                            <div class="product-item-badge">New</div>
+                        </div>
+                        @Html.ActionLink(
+                            "Edit",
+                            "Edit",
+                            new { id = product.Id },
+                            new { @class = "btn btn-primary btn-sm editButton" }
+                        )
+                        @Html.ActionLink(
+                            "Details",
+                            "Details",
+                            new { id = product.Id },
+                            new { @class = "btn btn-primary btn-sm detailsButton" }
+                        )
+                        @Html.ActionLink(
+                            "Delete",
+                            "Delete",
+                            new { id = product.Id },
+                            new { @class = "btn btn-primary btn-sm deleteButton" }
+                        )
+                    </div>
+                </div>
+            }
+        </div>
     </div>
 </div>
 

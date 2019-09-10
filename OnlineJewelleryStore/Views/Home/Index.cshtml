@@ -6,82 +6,87 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="container">
-        <div id="themeSlider" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
-                <li data-target="#themeSlider" data-slide-to="1"></li>
-                <li data-target="#themeSlider" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="imgOverlay"></div>
-                    <img style="height:320px;width:100%" src="~/Content/Images/nav-logo1.png" alt="First slide">
-                </div>
-                <div class="item">
-                    <div class="imgOverlay"></div>
-                    <img style="height:320px;width:100%" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM0NDQvdGV4dDpTZWNvbmQgc2xpZGUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTZkNjMxMjdlZiB0ZXh0IHsgZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NmQ2MzEyN2VmIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI2NC45NTMxMjUiIHk9IjI3MC4xNzk2ODc1Ij5TZWNvbmQgc2xpZGU8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" alt="Second slide">
-                    <div class="carousel-caption">
-                        <h3>Second slide</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    <div class="container" id="container">
+        <div id="main">
+            <div id="themeSlider" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+                    <li data-target="#themeSlider" data-slide-to="1"></li>
+                    <li data-target="#themeSlider" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="imgOverlay"></div>
+                        <img style="height:320px;width:100%" src="~/Content/Images/nav-logo1.png" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <div class="imgOverlay"></div>
+                        <img style="height:320px;width:100%" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNjY2OiM0NDQvdGV4dDpTZWNvbmQgc2xpZGUKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTZkNjMxMjdlZiB0ZXh0IHsgZmlsbDojNDQ0O2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjQ1cHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1NmQ2MzEyN2VmIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iIzY2NiIvPjxnPjx0ZXh0IHg9IjI2NC45NTMxMjUiIHk9IjI3MC4xNzk2ODc1Ij5TZWNvbmQgc2xpZGU8L3RleHQ+PC9nPjwvZz48L3N2Zz4=" alt="Second slide">
+                        <div class="carousel-caption">
+                            <h3>Second slide</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="imgOverlay"></div>
+                        <img style="height:320px;width:100%" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiMzMzMvdGV4dDpUaGlyZCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NmQ2MzEzODdjIHRleHQgeyBmaWxsOiMzMzM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2ZDYzMTM4N2MiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNTU1Ii8+PGc+PHRleHQgeD0iMjk4LjMyMDMxMjUiIHk9IjI3MC4xNzk2ODc1Ij5UaGlyZCBzbGlkZTwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="Third slide">
+                        <div class="carousel-caption">
+                            <h3>Third slide</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="imgOverlay"></div>
-                    <img style="height:320px;width:100%" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNTU1OiMzMzMvdGV4dDpUaGlyZCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NmQ2MzEzODdjIHRleHQgeyBmaWxsOiMzMzM7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2ZDYzMTM4N2MiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNTU1Ii8+PGc+PHRleHQgeD0iMjk4LjMyMDMxMjUiIHk9IjI3MC4xNzk2ODc1Ij5UaGlyZCBzbGlkZTwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" alt="Third slide">
-                    <div class="carousel-caption">
-                        <h3>Third slide</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+                    <span class="fa fa-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#themeSlider" data-slide="next">
+                    <span class="fa fa-chevron-right"></span>
+                </a>
+            </div>
+            <div class="olContent f1">
+                <h2 style="color:black">Search Product/ Category</h2>
+            </div>
+            <form method="post">
+                <div class="olSearch fr">
+                    <input type="text" placeholder="Enter Keyword" name="search" class="inputComn houseText form-control" />
+                    <div class="searchIcon" style="width:50px">
+                        <button type="submit" class="searchBtn" style="padding:0px;">
+                            <img src="~/Content/Images/searchIcon.png" style="width:80%" />
+                        </button>
                     </div>
                 </div>
-            </div>
-            <a class="left carousel-control" href="#themeSlider" data-slide="prev">
-                <span class="fa fa-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#themeSlider" data-slide="next">
-                <span class="fa fa-chevron-right"></span>
-            </a>
-        </div>
-        <div class="olContent f1">
-            <h2 style="color:black">Search Product/ Category</h2>
-        </div>
-        <form method="post">
-            <div class="olSearch fr">
-                <input type="text" placeholder="Enter Keyword" name="search" class="inputComn houseText form-control" />
-                <div class="searchIcon" style="width:50px">
-                    <button type="submit" class="searchBtn" style="padding:0px;">
-                        <img src="~/Content/Images/searchIcon.png" style="width:80%" />
-                    </button>
-                </div>
-            </div>
 
-        </form>
+            </form>
 
-        @foreach (var category in Model.GetAllCategories())
-        {
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header bg-primary text-center text-capitalize text-justify">
-                        <h2 class=" category-heading">@category.Name</h2>
+            @foreach (var category in Model.GetAllCategories())
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header bg-primary text-center text-capitalize text-justify">
+                            <h2 class=" category-heading">@category.Name</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row product-container">
-                @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
-                {
-                    @Html.Action("_Productpartial", "Product", new { id = product.Id })
-                }
-            </div>
-            @Html.ActionLink(
-                "View All " + @category.Name,
-                "Products",
-                "Product",
-                new { categoryId = @category.Id},
-                new {
-                    @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",
-                    @style = "float:right;"
-                }
-            )
-        }
+                <div class="row product-container">
+                    @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
+                    {
+                        @Html.Action("_Productpartial", "Product", new { id = product.Id })
+                    }
+                </div>
+                @Html.ActionLink(
+                    "View All " + @category.Name,
+                    "Products",
+                    "Product",
+                    new { categoryId = @category.Id},
+                    new {
+                        @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",
+                        @style = "float:right;"
+                    }
+                )
+                <br />
+                <br />
+                <br />
+            }
+        </div>
     </div>
 }

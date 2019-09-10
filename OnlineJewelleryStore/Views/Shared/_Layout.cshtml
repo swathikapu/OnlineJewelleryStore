@@ -136,12 +136,15 @@
         </div>
     </nav>
     @RenderBody()
-    <div class="navbar navbar-inner" style="margin-bottom:0px;">
+    @*<div class="navbar navbar-inner" style="margin-bottom:0px;">
         <footer style="text-align:center;padding-bottom:10px" class="bg-primary">
             <hr />
             <p>&copy; @DateTime.Now.Year - Swathi E-Commerce Website</p>
         </footer>
-    </div>
+    </div>*@
+    <footer id="footer" class="bg-primary">
+        <p>&copy; @DateTime.Now.Year - Swathi E-Commerce Website</p>
+    </footer>
 
     @RenderSection("scripts", required: false)
 </body>

@@ -4,60 +4,61 @@
     ViewBag.Title = "Buy";
 }
 
-<div class="container" style="padding-top:30px;">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header bg-primary text-center text-capitalize">
-                <h2 class=" category-heading">Your Order Details</h2>
-            </div>
-        </div>
-    </div>
-    <div style="border: 1px solid gray; border-radius:6px;padding:20px;">
-        <div class="row" style="background-color:lightgray">
-            <div class="col-md-3 col-sm-3 col-xs-6">
-                <h2>ORDER # @Model.Id</h2>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
-                <h6 style="font-weight:bold;">ORDER PLACED</h6>
-                <p>@Model.CreationDate</p>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
-                <h6 style="font-weight:bold">TOTAL</h6>
-                <p>@Model.Payment</p>
-            </div>
-            <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
-                <h6 style="font-weight:bold">DISPATCH TO</h6>
-                <p>@Model.Tbl_Member.FirstName @Model.Tbl_Member.LastName</p>
-            </div>
-        </div>
-        <br />
-        @foreach (var orderDetails in Model.Tbl_OrderDetails)
-        {
-            <div class="row" style="padding-bottom:5px">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <img class="img-responsive" title="click to view product detail"
-                         style="cursor:pointer;width:100px;height:100px;border:solid;border-radius:2px"
-                         src=@Url.Content(orderDetails.Tbl_Product.Image) />
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <h5 class="text-primary">@orderDetails.Tbl_Product.Name</h5>
-                    <p class="text-danger" style="font-weight:bold">@orderDetails.Tbl_Product.Price</p>
-                    <dd>(Qty: @orderDetails.Quantity)</dd>
+<div class="container" id="container" style="padding-top:30px;">
+    <div id="main">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header bg-primary text-center text-capitalize">
+                    <h2 class=" category-heading">Your Order Details</h2>
                 </div>
             </div>
-        }
+        </div>
+        <div style="border: 1px solid gray; border-radius:6px;padding:20px;">
+            <div class="row" style="background-color:lightgray">
+                <div class="col-md-3 col-sm-3 col-xs-6">
+                    <h2>ORDER # @Model.Id</h2>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
+                    <h6 style="font-weight:bold;">ORDER PLACED</h6>
+                    <p>@Model.CreationDate</p>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
+                    <h6 style="font-weight:bold">TOTAL</h6>
+                    <p>@Model.Payment</p>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top:5px;">
+                    <h6 style="font-weight:bold">DISPATCH TO</h6>
+                    <p>@Model.Tbl_Member.FirstName @Model.Tbl_Member.LastName</p>
+                </div>
+            </div>
+            <br />
+            @foreach (var orderDetails in Model.Tbl_OrderDetails)
+            {
+                <div class="row" style="padding-bottom:5px">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <img class="img-responsive" title="click to view product detail"
+                             style="cursor:pointer;width:100px;height:100px;border:solid;border-radius:2px"
+                             src=@Url.Content(orderDetails.Tbl_Product.Image) />
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <h5 class="text-primary">@orderDetails.Tbl_Product.Name</h5>
+                        <p class="text-danger" style="font-weight:bold">@orderDetails.Tbl_Product.Price</p>
+                        <dd>(Qty: @orderDetails.Quantity)</dd>
+                    </div>
+                </div>
+            }
 
+        </div>
+        @Html.ActionLink(
+            "Continue Shopping",
+            "Index",
+            "Home",
+            new {},
+            new {
+                @class = "btn btn-primary btn-sm continueButton",
+                @style = "float:left;margin-top:20px;"
+        })
     </div>
-    @Html.ActionLink(
-        "Continue Shopping",
-        "Index",
-        "Home",
-        new {},
-        new {
-            @class = "btn btn-primary btn-sm continueButton",
-            @style = "float:left;margin-top:20px;"
-    }
-)
 </div>
 
 
