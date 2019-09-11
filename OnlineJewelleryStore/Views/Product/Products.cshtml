@@ -3,33 +3,38 @@
 @{
     ViewBag.Title = "Products";
 }
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-<div class="container" style="padding-top:30px;">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="page-header bg-primary text-center text-capitalize">
-                <h2 class=" category-heading">@ViewBag.categoryName</h2>
+<div id="container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container" id="main" style="padding-top:30px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header bg-primary text-center text-capitalize">
+                        <h2 class=" category-heading">@ViewBag.categoryName</h2>
+                    </div>
+                </div>
             </div>
+            <div class="row product-container">
+                @foreach (var product in Model)
+                {
+                    @Html.Action("_Productpartial", new { id = product.Id })
+                }
+            </div>
+            @Html.ActionLink(
+                "Back to Home Page ",
+                "Index",
+                "Home",
+                new {},
+                new {
+                    @class = "btn btn-primary btn-sm backButton",
+                    @style = "float:right;"
+                }
+            )
+        <br />
+        <br />
         </div>
-    </div>
-    <div class="row product-container">
-        @foreach (var product in Model)
-        {
-            @Html.Action("_Productpartial", new { id = product.Id })
-        }
-    </div>
-    @Html.ActionLink(
-        "Back to Home Page ",
-        "Index",
-        "Home",
-        new {},
-        new {
-            @class = "btn btn-primary btn-sm backButton",
-            @style = "float:right;"
-        }
-    )
+    }
+
 </div>
-}
 
