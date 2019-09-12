@@ -66,6 +66,7 @@ namespace OnlineJewelleryStore.Controllers
         {
             Session.Remove("username");
             Session.Remove("password");
+            Session.Remove("cart");
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
