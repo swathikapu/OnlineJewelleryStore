@@ -13,6 +13,7 @@ namespace OnlineJewelleryStore.Controllers
         MainRepository mainRepo = new MainRepository();
         public ActionResult Products(int categoryId)
         {
+            ViewBag.SelectedId = categoryId;
             List<Tbl_Product> products = mainRepo.GetProductsByCategoryId(categoryId);
             Tbl_Category category = mainRepo.GetCategory(categoryId);
             ViewBag.categoryName = category.Name;

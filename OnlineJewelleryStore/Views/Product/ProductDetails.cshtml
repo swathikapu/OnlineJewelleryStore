@@ -15,11 +15,14 @@
         </div>
         <div class="row">
             <div class="col-md-3" style="text-align:center">
-                <img src="@Url.Content(Model.Image)"
-                     width="200"
-                     height="200"
-                     style="border: 3px solid gray; border-radius:6px;" />
+                <div class="zoom">
+                    <img id="myimage" src="@Url.Content(Model.Image)"
+                         width="200"
+                         height="200"
+                         style="border: 3px solid gray; border-radius:6px;">
+                </div>
             </div>
+
             <div class="col-md-9" style="margin-top:10px;text-align:justify;">
                 @{
                     string[] words = Model.Description.Split('£');
@@ -88,4 +91,6 @@
             });
         }
     );
+    imageZoom("myimage", "myresult");
 </script>
+
