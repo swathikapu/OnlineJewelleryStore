@@ -31,19 +31,5 @@ namespace OnlineJewelleryStore.Controllers
             Tbl_Product product = mainRepo.GetProductById((int)id);
             return View(product);
         }
-
-        public ActionResult ProductDetails2(int? id)
-        {
-            ProductViewModel productVM = new ProductViewModel() { Product = mainRepo.GetProductById((int)id) };
-            //Tbl_Product product = mainRepo.GetProductById((int)id);
-            return View(productVM);
-        }
-
-        [HttpPost]
-        public ActionResult ProductDetails2(ProductViewModel pvm)
-        {
-            int selected = pvm.SelectedQuantity;
-            return View();
-        }
     }
 }

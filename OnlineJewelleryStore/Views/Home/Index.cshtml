@@ -64,7 +64,7 @@
             }
             <div>
                 <div style="display:inline-block">
-                    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Category Filter: </h4>
+                    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Filter By: </h4>
                     @Html.DropDownList(
                         "CategoryId",
                         dropDownItems,
@@ -74,13 +74,15 @@
                         }
                     )
                 </div>
-                <div style="display:inline-block">
+                <div style="display:inline-block;position:relative;top:2px;">
                     <form method="post">
                         <div class="olSearch fr" style="display:inline-block;width:243px">
-                            <input type="text" placeholder="Search Product/ Category" name="search" class="inputComn houseText form-control" />
-                            <div class="searchIcon" style="width:50px">
-                                <button type="submit" class="searchBtn" style="padding:0px;">
-                                    <img src="~/Content/Images/searchIcon.png" style="width:80%" />
+                            <input type="text" placeholder="Search Product/ Category" name="search" class="inputComn houseText form-control" style="height:30px" />
+                            <div class="searchIcon">
+                                <button 
+                                        type="submit" 
+                                        class="glyphicon glyphicon-search" 
+                                        style="padding: 0px;width: 28px;height: 30px;position: relative;top: 0px;border-radius: 4px;border: 1px solid #ccc;">
                                 </button>
                             </div>
                         </div>

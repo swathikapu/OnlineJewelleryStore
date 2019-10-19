@@ -14,6 +14,22 @@ namespace OnlineJewelleryStore.Controllers
 
         public ActionResult Buy()
         {
+            if (Session["username"] == null && Session["password"] == null)
+            {
+                //This is needed because when the user is not logged in before
+                //checking out, show the login page and once logged in show the
+                // checkout page.
+                DestinationRoute destination = new DestinationRoute()
+                {
+                    ActionName = "Buy",
+                    ControllerName = "Order"
+                };
+                Session["destination"] = destination;
+                return RedirectToAction(
+                    "Login",
+                    "Account"
+                );
+            }
             Cart cart = mainRepo.GetCartFromSession(Session);
             string username = Session["username"].ToString();
             string password = Session["password"].ToString();
