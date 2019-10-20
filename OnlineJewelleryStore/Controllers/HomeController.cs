@@ -11,9 +11,15 @@ namespace OnlineJewelleryStore.Controllers
     public class HomeController : Controller
     {
         MainRepository mainRepo = new MainRepository();
-        public ActionResult Index(string search, int selectedId = 0)
+        public ActionResult Index(string search, int selectedId = 0, bool showHeaderImage=true)
         {
+            if (!string.IsNullOrEmpty(search))
+                showHeaderImage = false;
             ViewBag.SelectedId = selectedId;
+            ViewBag.ShowHeaderImage = showHeaderImage;
+            ViewBag.ContainerMarginTop = 0;
+            if (!showHeaderImage)
+                ViewBag.ContainerMarginTop = 50;
             mainRepo.search = search;
             return View(mainRepo);
         }

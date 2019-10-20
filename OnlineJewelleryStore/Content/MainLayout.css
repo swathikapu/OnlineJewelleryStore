@@ -19,11 +19,11 @@ body {
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
+/*.body-content {
     padding-left: 15px;
     padding-right: 15px;
     width: auto;
-}
+}*/
 
 h1,
 h2,
@@ -354,7 +354,7 @@ my-navbar {
     float: right;
 }
 .frontButton {
-    background: mediumaquamarine url('Images/front_icon_white.png') no-repeat;
+    background: #36BFC4 url('Images/front_icon_white.png') no-repeat;
     color: #fff;
     padding-left: 31px;
     background-size: 24px;
