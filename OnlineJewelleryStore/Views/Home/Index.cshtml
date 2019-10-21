@@ -3,132 +3,134 @@
     ViewBag.Title = "Home Page";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    if (ViewBag.ShowHeaderImage)
+<div id="container">
+    @using (Html.BeginForm())
     {
-        <img style="height:100vh;width:100%" src="~/Content/Images/theme_pic9.png" alt="First slide">
-    }
-    @*<div id="themeSlider" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
-                <li data-target="#themeSlider" data-slide-to="1"></li>
-                <li data-target="#themeSlider" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div></div>
-                    <img style="height:100vh;width:100%" src="~/Content/Images/theme_pic5.png" alt="First slide">
-                </div>
-                <div class="item">
-                        <div class="imgOverlay"></div>
-                        <img style="height:320px;width:100%" src="~/Content/Images/nav-logo2.png" alt="Second slide">
+        @Html.AntiForgeryToken()
+        if (ViewBag.ShowHeaderImage)
+        {
+            <img style="height:100vh;width:100%" src="~/Content/Images/theme_pic9.png" alt="First slide">
+        }
+        @*<div id="themeSlider" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+                    <li data-target="#themeSlider" data-slide-to="1"></li>
+                    <li data-target="#themeSlider" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div></div>
+                        <img style="height:100vh;width:100%" src="~/Content/Images/theme_pic5.png" alt="First slide">
                     </div>
                     <div class="item">
-                        <div class="imgOverlay"></div>
-                        <img style="height:320px;width:100%" src="~/Content/Images/nav-logo3.png" alt="Third                                                                                 slide">
-                    </div>
-            </div>
-            <a class="left carousel-control" href="#themeSlider" data-slide="prev">
-                <span class="fa fa-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#themeSlider" data-slide="next">
-                <span class="fa fa-chevron-right"></span>
-            </a>
-        </div>*@
-    <div class="container" id="container">
-        <div id="main">
-            @{List<SelectListItem> dropDownItems = new List<SelectListItem>();
-                dropDownItems.Add(
-                    new SelectListItem
-                    {
-                        Text = "All",
-                        Value = Url.Action(
-                            "Index",
-                            "Home",
-                            new { showHeaderImage = false}
-                        )
-                    }
-                );
-            }
-            @foreach (var category in Model.GetAllCategories())
-            {
-                dropDownItems.Add(
-                    new SelectListItem
-                    {
-                        Text = category.Name,
-                        Value = Url.Action(
-                            "Index",
-                            "Home",
-                            new { selectedId = @category.Id, showHeaderImage = false }
-                    ),
-                        Selected = category.Id == ViewBag.SelectedId
-                    }
-            );
-            }
-            <div>
-                <div style="display:inline-block">
-                    <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Filter By: </h4>
-                    @Html.DropDownList(
-                        "CategoryId",
-                        dropDownItems,
-                        htmlAttributes: new {
-                            @class = "btn btn-primary btn-sm ca",
-                            @id = "indexcategoryddl"
-                        }
-                    )
-                </div>
-                <div style="display:inline-block;position:relative;top:2px;">
-                    <form method="post">
-                        <div class="olSearch fr" style="display:inline-block;width:243px">
-                            <input type="text" placeholder="Search Product/ Category" name="search" class="inputComn houseText form-control" style="height:30px" />
-                            <div class="searchIcon">
-                                <button type="submit"
-                                        class="glyphicon glyphicon-search"
-                                        style="padding: 0px;width: 28px;height: 30px;position: relative;top: 0px;border-radius: 4px;border: 1px solid #ccc;"></button>
-                            </div>
+                            <div class="imgOverlay"></div>
+                            <img style="height:320px;width:100%" src="~/Content/Images/nav-logo2.png" alt="Second slide">
                         </div>
-                    </form>
-                </div>
-
-            </div>
-            @foreach (var category in Model.GetAllCategories())
-            {
-                if (ViewBag.SelectedId == 0 || ViewBag.SelectedId == category.Id)
-                {
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="page-header text-center text-capitalize text-justify" style="background-color:#36BFC4; color:white">
-                                <h2 class=" category-heading">@category.Name</h2>
-                            </div>
+                        <div class="item">
+                            <div class="imgOverlay"></div>
+                            <img style="height:320px;width:100%" src="~/Content/Images/nav-logo3.png" alt="Third                                                                                 slide">
                         </div>
-                    </div>
-                    <div class="row product-container">
-                        @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
+                </div>
+                <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+                    <span class="fa fa-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#themeSlider" data-slide="next">
+                    <span class="fa fa-chevron-right"></span>
+                </a>
+            </div>*@
+        <div class="container">
+            <div id="main">
+                @{List<SelectListItem> dropDownItems = new List<SelectListItem>();
+                    dropDownItems.Add(
+                        new SelectListItem
                         {
-                            @Html.Action("_Productpartial", "Product", new { id = product.Id })
+                            Text = "All",
+                            Value = Url.Action(
+                                "Index",
+                                "Home",
+                                new { showHeaderImage = false }
+                            )
                         }
-                    </div>
-                    @Html.ActionLink(
-                        "View All " + @category.Name,
-                        "Products",
-                        "Product",
-                        new { categoryId = @category.Id},
-                        new {
-                            @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",
-                            @style = "float:right;"
-                        }
-                    )
-                    <br />
-                    <br />
-                    <br />
+                    );
                 }
+                @foreach (var category in Model.GetAllCategories())
+                {
+                    dropDownItems.Add(
+                        new SelectListItem
+                        {
+                            Text = category.Name,
+                            Value = Url.Action(
+                                "Index",
+                                "Home",
+                                new { selectedId = @category.Id, showHeaderImage = false }
+                        ),
+                            Selected = category.Id == ViewBag.SelectedId
+                        }
+                );
+                }
+                <div>
+                    <div style="display:inline-block">
+                        <h4 style="display:inline-block;position:relative;top:2px;" class="text-primary">Filter By: </h4>
+                        @Html.DropDownList(
+                            "CategoryId",
+                            dropDownItems,
+                            htmlAttributes: new {
+                                @class = "btn btn-primary btn-sm ca",
+                                @id = "indexcategoryddl"
+                            }
+                        )
+                    </div>
+                    <div style="display:inline-block;position:relative;top:2px;">
+                        <form method="post">
+                            <div class="olSearch fr" style="display:inline-block;width:243px">
+                                <input type="text" placeholder="Search Product/ Category" name="search" class="inputComn houseText form-control" style="height:30px" />
+                                <div class="searchIcon">
+                                    <button type="submit"
+                                            class="glyphicon glyphicon-search"
+                                            style="padding: 0px;width: 28px;height: 30px;position: relative;top: 0px;border-radius: 4px;border: 1px solid #ccc;"></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
 
-            }
+                </div>
+                @foreach (var category in Model.GetAllCategories())
+                {
+                    if (ViewBag.SelectedId == 0 || ViewBag.SelectedId == category.Id)
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="page-header text-center text-capitalize text-justify" style="background-color:#36BFC4; color:white">
+                                    <h2 class=" category-heading">@category.Name</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row product-container">
+                            @foreach (var product in Model.GetFeaturedProductsByCategoryId(category.Id))
+                            {
+                                @Html.Action("_Productpartial", "Product", new { id = product.Id })
+                            }
+                        </div>
+                        @Html.ActionLink(
+                            "View All " + @category.Name,
+                            "Products",
+                            "Product",
+                            new { categoryId = @category.Id},
+                            new {
+                                @class = "btn btn-primary btn-sm frontButton wow bounceInLeft",
+                                @style = "float:right;"
+                            }
+                        )
+                        <br />
+                        <br />
+                        <br />
+                    }
+
+                }
+            </div>
         </div>
-    </div>
-}
+    }
+</div>
 
 <script>
     $(function () {

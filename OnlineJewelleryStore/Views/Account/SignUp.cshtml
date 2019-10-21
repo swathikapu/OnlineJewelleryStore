@@ -4,7 +4,8 @@
     ViewBag.Title = "SignUp";
 }
 
-@using (Html.BeginForm())
+<div id="container">
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal" id="container" style="padding:30px; padding-left:50px;">
@@ -66,4 +67,5 @@
                 </div>
             </div>
         </div>
-     }
+    }
+</div>
