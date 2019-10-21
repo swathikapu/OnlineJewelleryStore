@@ -671,3 +671,118 @@ ul ul, ol ul {
     .zoom:hover {
         transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
+
+@media (min-width: 1200px) {
+    .product-item {
+        height: 400px;
+    }
+
+    .thumbnail a > img {
+        height: 260px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .product-item {
+        height: 400px;
+    }
+
+    .thumbnail a > img {
+        height: 260px;
+        width: 100%;
+    }
+}
+
+@media (min-width: 992px) {
+    .product-item {
+        height: 400px;
+    }
+
+    .thumbnail a > img {
+        height: 260px;
+        width: 100%;
+    }
+}
+
+/* Ipad Portrait and Landscape */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    .product-item {
+        height: 300px;
+    }
+
+    .thumbnail a > img {
+        height: 160px;
+        width: 100%;
+    }
+}
+
+/* all mobile phones */
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */ 
+    .product-container {
+        margin-left: auto;
+    }
+
+    .product-item {
+        height: 350px;
+        width: 80vw;
+    }
+
+    .thumbnail a > img {
+        height: 200px;
+        width: 100%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    /* For ipads */
+    .product-container {
+        margin-left: auto;
+    }
+
+    .product-item {
+        height: 380px;
+        width: 42vw;
+    }
+
+    .thumbnail a > img {
+        height: 230px;
+        width: 100%;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .product-container {
+        margin-left: auto;
+    }
+
+    .product-item {
+        height: 350px;
+        width: 20vw;
+    }
+
+    .thumbnail a > img {
+        height: 200px;
+        width: 100%;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .product-container {
+        margin-left: auto;
+    }
+
+    .product-item {
+        height: 390px;
+        width: 21vw;
+    }
+
+    .thumbnail a > img {
+        height: 250px;
+        width: 100%;
+    }
+} 

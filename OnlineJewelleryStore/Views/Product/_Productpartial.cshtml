@@ -1,14 +1,13 @@
 ﻿
 @model OnlineJewelleryStore.Models.Tbl_Product
 
-<div class="col-md-3 col-sm-4 col-xs-9" style="margin-bottom:8px;">
-    <div class="thumbnail product-item" style="height:300px">
+<div class="col-md-3 col-sm-6 col-xs-9" style="margin-bottom:8px;">
+    <div class="thumbnail product-item">
         <a href=@Url.Action("ProductDetails", "Product", new {id = Model.Id})>
             <img 
                  src=@Url.Content(Model.Image) 
-                 class="img-responsive" 
-                 title="click to view product detail" 
-                 style="cursor:pointer;height:160px;width:100%;"
+                 class="media-resize" 
+                 title="click to view product detail"
              />
         </a>
         <div class="caption">
