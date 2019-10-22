@@ -675,7 +675,6 @@ ul ul, ol ul {
 
 /* all mobile phones */
 @media only screen and (max-width: 768px) {
-    /* For mobile phones: */ 
     .product-container {
         margin-left: auto;
     }
@@ -702,7 +701,6 @@ ul ul, ol ul {
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    /* For ipads */
     .product-container {
         margin-left: auto;
     }
