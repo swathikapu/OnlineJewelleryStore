@@ -9,7 +9,8 @@
         @Html.AntiForgeryToken()
         if (ViewBag.ShowHeaderImage)
         {
-            <img style="height:100vh;width:100%" src="~/Content/Images/theme_pic9.png" alt="First slide">
+            <img class="hidden-mobile" style="height:100vh;width:100%" src="~/Content/Images/theme_pic10.png" alt="First slide">
+            <img class="hidden-desktop" style="height:100vh;width:100%" src="~/Content/Images/theme_pic_mobile3.png" alt="First slide">
         }
         @*<div id="themeSlider" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">

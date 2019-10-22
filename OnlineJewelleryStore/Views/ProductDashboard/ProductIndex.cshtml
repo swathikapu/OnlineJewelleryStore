@@ -54,10 +54,9 @@
         <div class="row product-container">
             @foreach (var product in Model.GetProductsByCategoryId(ViewBag.SelectedId))
             {
-                <div class="col-md-3 col-sm-4 col-xs-10" style="margin-bottom:8px">
-                    <div class="thumbnail product-item" style="height:300px">
-                        <img class="img-responsive" title="click to view product detail"
-                             style="cursor:pointer;height:160px;width:100%;"
+                <div class="col-md-3 col-sm-6 col-xs-10" style="margin-bottom:8px">
+                    <div class="thumbnail product-item">
+                        <img class="media-resize" title="click to view product detail"
                              src=@Url.Content(product.Image) />
                         <div class="caption">
                             <h5 class="text-primary">@product.Name</h5>

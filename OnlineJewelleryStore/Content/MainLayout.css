@@ -672,50 +672,6 @@ ul ul, ol ul {
         transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
-@media (min-width: 1200px) {
-    .product-item {
-        height: 400px;
-    }
-
-    .thumbnail a > img {
-        height: 260px;
-        width: 100%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .product-item {
-        height: 400px;
-    }
-
-    .thumbnail a > img {
-        height: 260px;
-        width: 100%;
-    }
-}
-
-@media (min-width: 992px) {
-    .product-item {
-        height: 400px;
-    }
-
-    .thumbnail a > img {
-        height: 260px;
-        width: 100%;
-    }
-}
-
-/* Ipad Portrait and Landscape */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-    .product-item {
-        height: 300px;
-    }
-
-    .thumbnail a > img {
-        height: 160px;
-        width: 100%;
-    }
-}
 
 /* all mobile phones */
 @media only screen and (max-width: 768px) {
@@ -732,6 +688,15 @@ ul ul, ol ul {
     .thumbnail a > img {
         height: 200px;
         width: 100%;
+    }
+
+    .thumbnail > img {
+        height: 200px;
+        width: 100%;
+    }
+
+    .hidden-mobile {
+        display: none;
     }
 }
 
@@ -751,6 +716,15 @@ ul ul, ol ul {
         height: 230px;
         width: 100%;
     }
+
+    .thumbnail > img {
+        height: 230px;
+        width: 100%;
+    }
+
+    .hidden-desktop {
+        display: none;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -768,6 +742,15 @@ ul ul, ol ul {
         height: 200px;
         width: 100%;
     }
+
+    .thumbnail > img {
+        height: 200px;
+        width: 100%;
+    }
+
+    .hidden-desktop {
+        display: none;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -784,5 +767,14 @@ ul ul, ol ul {
     .thumbnail a > img {
         height: 250px;
         width: 100%;
+    }
+
+    .thumbnail > img {
+        height: 250px;
+        width: 100%;
+    }
+
+    .hidden-desktop {
+        display: none;
     }
 } 
