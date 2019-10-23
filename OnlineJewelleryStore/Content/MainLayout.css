@@ -697,10 +697,15 @@ ul ul, ol ul {
     .hidden-mobile {
         display: none;
     }
+
+    .hidden-desktop {
+        display: block;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+    /* For ipads */
     .product-container {
         margin-left: auto;
     }
@@ -720,8 +725,12 @@ ul ul, ol ul {
         width: 100%;
     }
 
-    .hidden-desktop {
+    .hidden-mobile {
         display: none;
+    }
+
+    .hidden-desktop {
+        display: block;
     }
 }
 
@@ -749,6 +758,10 @@ ul ul, ol ul {
     .hidden-desktop {
         display: none;
     }
+
+    .hidden-mobile {
+        display: block;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -774,5 +787,9 @@ ul ul, ol ul {
 
     .hidden-desktop {
         display: none;
+    }
+
+    .hidden-mobile {
+        display: block;
     }
 } 
